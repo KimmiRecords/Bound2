@@ -42,6 +42,7 @@ public class PlayerStats : MonoBehaviour, IGaseable, IGraviFloorDamageable
 
     float _playerHp;
     int _usbsCollected;
+    int _speedBoosts;
     HPRegen _hpRegen;
 
     public float PlayerHp
@@ -68,6 +69,23 @@ public class PlayerStats : MonoBehaviour, IGaseable, IGraviFloorDamageable
             if (_usbsCollected < maxUsbs)
             {
                 _usbsCollected = value;
+            }
+        }
+    }
+
+    public int SpeedBoosts
+    {
+        get
+        {
+            return _speedBoosts;
+        }
+
+        set
+        {
+            _speedBoosts = value;
+            if (_speedBoosts < 0)
+            {
+                _speedBoosts = 0;
             }
         }
     }

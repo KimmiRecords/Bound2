@@ -80,7 +80,7 @@ public class Inventory : MonoBehaviour
                 _slot[i].GetComponent<Slots>().type = itemType;
                 _slot[i].GetComponent<Slots>().icon = itemIcon;
 
-                itemObject.transform.parent = _slot[i].transform;
+                itemObject.transform.parent = _slot[i].transform; //lo mueve al inventario
 
                 itemObject.SetActive(false);
 

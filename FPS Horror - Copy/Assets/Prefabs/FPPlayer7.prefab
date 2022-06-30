@@ -572,7 +572,12 @@ MonoBehaviour:
   jumpHeight: 3
   gravityValue: 20
   agency: 1
+  boostSpeedMultiplier: 2
+  boostDuration: 4
+  boostJumpAdd: 2
   controller: {fileID: 0}
+  playerCamera: {fileID: 6718208575435062047}
+  cameraFOVChangeDuration: 1
 --- !u!114 &2662333412612807085
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -617,7 +622,7 @@ MonoBehaviour:
   playerHpMax: 300
   hpRegen: 50
   CanvasVidaUtil: {fileID: 0}
-  ModeloLinterna: {fileID: 0}
+  ModeloLinterna: {fileID: 5450147385531508260}
   cardKeyAccesses: []
   maxUsbs: 4
   playerTransform: {fileID: 0}

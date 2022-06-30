@@ -65,5 +65,10 @@ public class Controls
             PlayerStats.instance.GetFlashlight();
             Debug.Log("CHEAT: conseguiste la linterna");
         }
+
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            _playerMovement.StartSpeedBoost();
+        }
     }
 }

@@ -16,15 +16,21 @@ public class PlayerMovement : MonoBehaviour, IRalentizable
     public float jumpHeight;
     public float gravityValue;          //gravedad extra para que quede linda la caida del salto
     public bool agency = true;
+    public float boostSpeedMultiplier;
+    public float boostDuration;
+    public float boostJumpAdd;
 
     float _verticalVelocity;
     float _speedModifier;
     float _groundedTimer;
+    bool _boostOn;
     Vector3 _move;
 
     public CharacterController controller;
     public PlayerAnimations pAnims;
     public Controls controls;
+    public Camera playerCamera;
+    public float cameraFOVChangeDuration;
 
     Animator _anim;
 
@@ -140,5 +146,64 @@ public class PlayerMovement : MonoBehaviour, IRalentizable
     {
         _speedModifier = 1;
         AudioManager.instance.TriggerSound(AudioManager.instance.geigerCounter, 2, 0, 1, false);
+    }
+
+    public void StartSpeedBoost()
+    {
+        if (PlayerStats.instance.SpeedBoosts > 0)
+        {
+            if (!_boostOn)
+            {
+                print("consumiste un speedboost.");
+                PlayerStats.instance.SpeedBoosts--;
+                StartCoroutine("SpeedBoost", boostDuration);
+            }
+            else
+            {
+                print("bancala un toque, ya tenes puesto el boost");
+            }
+
+        }
+        else
+        {
+            print("no tenes speedboost para consumir");
+        }
+    }
+
+    public IEnumerator SpeedBoost(float boostDuration)
+    {
+        float _timer = 0;
+        float _initialFOV = playerCamera.fieldOfView;
+
+        jumpHeight += boostJumpAdd;
+        _boostOn = true;
+        AudioManager.instance.PlayBoostOn();
+
+        while (_timer < cameraFOVChangeDuration)
+        {
+            _timer += (Time.deltaTime / cameraFOVChangeDuration);
+            playerCamera.fieldOfView = Mathf.Lerp(_initialFOV, _initialFOV + 60, _timer);
+            _speedModifier = Mathf.Lerp(1, boostSpeedMultiplier, _timer);
+
+            print(_timer);
+            yield return null;
+        }
+
+        yield return new WaitForSeconds(boostDuration);
+        _timer = 0;
+
+        AudioManager.instance.PlayBoostOff();
+        while (_timer < cameraFOVChangeDuration)
+        {
+            _timer += (Time.deltaTime / cameraFOVChangeDuration);
+            playerCamera.fieldOfView = Mathf.Lerp(_initialFOV + 60, _initialFOV, _timer);
+            _speedModifier = Mathf.Lerp(boostSpeedMultiplier, 1, _timer);
+
+            print(_timer);
+            yield return null;
+        }
+
+        jumpHeight -= boostJumpAdd;
+        _boostOn = false;
     }
 }

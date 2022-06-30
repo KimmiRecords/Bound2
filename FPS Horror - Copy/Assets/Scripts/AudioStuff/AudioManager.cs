@@ -49,6 +49,9 @@ public class AudioManager : MonoBehaviour
     public AudioSource tos2;
     public AudioSource tos3;
     public AudioSource geigerCounter;
+    public AudioSource boostOn;
+    public AudioSource boostOff;
+
 
     public FinalUSB finalUsb;
 
@@ -445,6 +448,18 @@ public class AudioManager : MonoBehaviour
                 jumpDownIsReady = false;
             }
         }
+    }
+
+    //SPEED BOOST
+
+    public void PlayBoostOn()
+    {
+        boostOn.Play();
+    }
+
+    public void PlayBoostOff()
+    {
+        boostOff.Play();
     }
     
     //ZOMBIE EXPLOSIVO
