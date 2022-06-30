@@ -26,7 +26,6 @@ public class GraviFloor : MonoBehaviour
             var ralentizable = other.GetComponent<IRalentizable>();
             ralentizable.ExitSlow();
         }
-
     }
 
     private void OnTriggerStay(Collider other)

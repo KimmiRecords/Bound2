@@ -139,12 +139,18 @@ public class PlayerMovement : MonoBehaviour, IRalentizable
     }
     public void EnterSlow()
     {
-        _speedModifier = 0.5f;
+        if (!_boostOn)
+        {
+            _speedModifier = 0.5f;
+        }
         AudioManager.instance.TriggerSound(AudioManager.instance.geigerCounter, 2, 0, 1, true);
     }
     public void ExitSlow()
     {
-        _speedModifier = 1;
+        if (!_boostOn)
+        {
+            _speedModifier = 1;
+        }
         AudioManager.instance.TriggerSound(AudioManager.instance.geigerCounter, 2, 0, 1, false);
     }
 
@@ -162,7 +168,6 @@ public class PlayerMovement : MonoBehaviour, IRalentizable
             {
                 print("bancala un toque, ya tenes puesto el boost");
             }
-
         }
         else
         {

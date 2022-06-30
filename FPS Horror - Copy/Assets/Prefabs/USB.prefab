@@ -130,6 +130,7 @@ MonoBehaviour:
   pickUpType: 0
   muestraManito: 1
   inventory: {fileID: 0}
+  usbManager: {fileID: 0}
 --- !u!114 &6270843050187295747
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -217,7 +218,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 9703d407c5d4f29428df44c5bf35fde0, type: 2}
+      objectReference: {fileID: 2100000, guid: 18f53882efe7d8d4a866ec3244b5738e, type: 2}
     - target: {fileID: 3590086638062959488, guid: e482a9a3af99f2140a4855e53898ee35,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
