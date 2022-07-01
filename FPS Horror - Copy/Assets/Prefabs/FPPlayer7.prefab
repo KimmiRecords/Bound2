@@ -570,7 +570,10 @@ MonoBehaviour:
   walkingSpeed: 7
   runningSpeed: 10
   jumpHeight: 3
+  jumpHeightOnMicroGravity: 8
   gravityValue: 20
+  gravityValueOnMicroGravity: 5
+  speedModifierOnMicroGravity: 0.8
   agency: 1
   boostSpeedMultiplier: 2
   boostDuration: 4

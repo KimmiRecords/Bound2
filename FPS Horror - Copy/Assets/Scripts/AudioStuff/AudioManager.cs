@@ -51,6 +51,9 @@ public class AudioManager : MonoBehaviour
     public AudioSource geigerCounter;
     public AudioSource boostOn;
     public AudioSource boostOff;
+    public AudioSource microGravityOn;
+    public AudioSource microGravityOff;
+
 
 
     public FinalUSB finalUsb;

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour, IRalentizable
+public class PlayerMovement : MonoBehaviour, IRalentizable, IMicroGravity
 {
     //el movimiento del player. con character controller y a mano
     //llama por composicion a playeranimations y controls
@@ -14,7 +14,10 @@ public class PlayerMovement : MonoBehaviour, IRalentizable
     public float walkingSpeed;
     public float runningSpeed;
     public float jumpHeight;
+    public float jumpHeightOnMicroGravity;
     public float gravityValue;          //gravedad extra para que quede linda la caida del salto
+    public float gravityValueOnMicroGravity;
+    public float speedModifierOnMicroGravity;
     public bool agency = true;
     public float boostSpeedMultiplier;
     public float boostDuration;
@@ -26,6 +29,9 @@ public class PlayerMovement : MonoBehaviour, IRalentizable
     bool _boostOn;
     Vector3 _move;
 
+    float initialJumpHeight;
+    float initialGravityValue;
+
     public CharacterController controller;
     public PlayerAnimations pAnims;
     public Controls controls;
@@ -33,6 +39,19 @@ public class PlayerMovement : MonoBehaviour, IRalentizable
     public float cameraFOVChangeDuration;
 
     Animator _anim;
+
+    //bool _isInsideMicroGrav;
+    //public bool IsInsideMicroGravity
+    //{
+    //    get
+    //    {
+    //        return _isInsideMicroGrav;
+    //    }
+    //    set
+    //    {
+    //        _isInsideMicroGrav = value;
+    //    }
+    //}
 
     void Start()
     {
@@ -48,6 +67,8 @@ public class PlayerMovement : MonoBehaviour, IRalentizable
 
         playerSpeed = walkingSpeed;
         _speedModifier = 1;
+        initialJumpHeight = jumpHeight;
+        initialGravityValue = gravityValue;
         controls = new Controls(this);
         pAnims = new PlayerAnimations(_anim); //construyo scripts x composicion
 
@@ -152,6 +173,25 @@ public class PlayerMovement : MonoBehaviour, IRalentizable
             _speedModifier = 1;
         }
         AudioManager.instance.TriggerSound(AudioManager.instance.geigerCounter, 2, 0, 1, false);
+    }
+
+    public void EnterMicroGravity()
+    {
+        //IsInsideMicroGravity = true;
+        gravityValue = gravityValueOnMicroGravity;
+        jumpHeight = jumpHeightOnMicroGravity;
+        _speedModifier = speedModifierOnMicroGravity;
+        AudioManager.instance.TriggerSound(AudioManager.instance.microGravityOn, 0.5f, 0, 1, true);
+    }
+
+    public void ExitMicroGravity()
+    {
+        //IsInsideMicroGravity = false;
+        gravityValue = initialGravityValue;
+        jumpHeight = initialJumpHeight;
+        _speedModifier = 1;
+        AudioManager.instance.TriggerSound(AudioManager.instance.microGravityOff, 0.5f, 0, 1, true);
+
     }
 
     public void StartSpeedBoost()
