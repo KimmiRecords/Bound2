@@ -13,7 +13,6 @@ public class MicroGravityTrigger : MonoBehaviour
         if (other.GetComponent<IMicroGravity>() != null)
         {
             var afectado = other.GetComponent<IMicroGravity>();
-            print("entraron a mi zona de microgravity");
             afectado.EnterMicroGravity();
         }
     }

@@ -63,7 +63,7 @@ public class Patrol : MonoBehaviour, IRalentizable
         if (!_yaViAlPlayer && detectPlayer.playerIsInRange) //veo al player y corro hacia punto 2
         {
             AudioManager.instance.StopZIdle();
-            AudioManager.instance.PlayZStress();
+            AudioManager.instance.PlayZRun();
 
             _boomerAnims.StartRunning();
             miNavMeshAgent.speed = runningSpeed * _speedModifier;
@@ -85,7 +85,7 @@ public class Patrol : MonoBehaviour, IRalentizable
 
     public void Explode()
     {
-        AudioManager.instance.StopZScream();
+        AudioManager.instance.StopZPainScream();
         AudioManager.instance.PlayZExplosion(transform.position);
         GameObject _exp = Instantiate(exp, boomerModel.transform.position, boomerModel.transform.rotation);
         Destroy(_exp, 3);
@@ -101,8 +101,8 @@ public class Patrol : MonoBehaviour, IRalentizable
     public void Stop()
     {
         _boomerAnims.StartPain();
-        AudioManager.instance.StopZStress();
-        AudioManager.instance.PlayZScream();
+        AudioManager.instance.StopZRun();
+        AudioManager.instance.PlayZPainScream();
         miNavMeshAgent.speed = 0;
     }
 

@@ -50,11 +50,11 @@ public class CutsceneManager : MonoBehaviour
 
     void Start()
     {
-        if (AudioManager.instance.screamer1.isPlaying)
+        if (AudioManager.instance.sound["Screamer1SFX"].isPlaying)
         {
             AudioManager.instance.StopScreamer(1);
         }
-        if (AudioManager.instance.screamer2.isPlaying)
+        if (AudioManager.instance.sound["Screamer2SFX"].isPlaying)
         {
             AudioManager.instance.StopScreamer(2);
         }
@@ -79,9 +79,9 @@ public class CutsceneManager : MonoBehaviour
         _alarmaTimer += (Time.deltaTime / alarmaFadeOutDuration);
         _cameraTimer += (Time.deltaTime / cameraTravelDuration);
 
-        if (AudioManager.instance.alarmaTriple.isPlaying)
+        if (AudioManager.instance.sound["AlarmaTriple"].isPlaying)
         {
-            AudioManager.instance.alarmaTriple.volume = Mathf.Lerp(AudioManager.instance.alarmaTriple.volume, 0, _alarmaTimer);
+            AudioManager.instance.sound["AlarmaTriple"].volume = Mathf.Lerp(AudioManager.instance.sound["AlarmaTriple"].volume, 0, _alarmaTimer);
         }
 
         pm.MoveForward();

@@ -8,53 +8,6 @@ public class AudioManager : MonoBehaviour
     //por diego katabian
 
     public static AudioManager instance;
-    public AudioSource pickup;
-    public AudioSource bgm;
-    public AudioSource screamer1;
-    public AudioSource screamer2;
-    public AudioSource mainMenuMusic;
-    public AudioSource pPlateOn;
-    public AudioSource pPlateOff;
-    public AudioSource linternaOn;
-    public AudioSource linternaOff;
-    public AudioSource pasos1;
-    public AudioSource pasos2;
-    public AudioSource jumpUp;
-    public AudioSource jumpDown;
-    public AudioSource doorOpen;
-    public AudioSource doorClose;
-    public AudioSource hollowRoar;
-    public AudioSource accessDenied;
-    public AudioSource alarmaNorway;
-    public AudioSource alarmaTriple;
-    public AudioSource derrumbe0;
-    public AudioSource derrumbe1;
-    public AudioSource derrumbe2;
-    public AudioSource bigLightSwitch;
-    public AudioSource tpToCheckpoint;
-    public AudioSource mudSteps;
-    public AudioSource mudSteps2;
-    public AudioSource cough;
-    public AudioSource heavyBreathing;
-    public AudioSource zombieStress;
-    public AudioSource zombieScream;
-    public AudioSource zombieIdle;
-    public AudioSource zombieExplosion;
-    public AudioSource gasLeak;
-    public AudioSource sewerAmbience;
-    public AudioSource inventoryOpen;
-    public AudioSource inventoryClose;
-    public AudioSource tos0;
-    public AudioSource tos1;
-    public AudioSource tos2;
-    public AudioSource tos3;
-    public AudioSource geigerCounter;
-    public AudioSource boostOn;
-    public AudioSource boostOff;
-    public AudioSource microGravityOn;
-    public AudioSource microGravityOff;
-
-
 
     public FinalUSB finalUsb;
 
@@ -67,7 +20,7 @@ public class AudioManager : MonoBehaviour
     int _explosionCycleIndex = 0;
     int _tosCycleIndex = 0;
 
-    //protected Dictionary<string, AudioSource> soundDictionary = new Dictionary<string, AudioSource>();
+    public Dictionary<string, AudioSource> sound = new Dictionary<string, AudioSource>();
 
     void Awake()
     {
@@ -81,17 +34,22 @@ public class AudioManager : MonoBehaviour
         }
         DontDestroyOnLoad(this);
 
-        volumenDeseadoScreamer = screamer1.volume; //ojo, esto significa que los 2 screamers tendran el mismo volumen
+        allSounds = GetComponentsInChildren<AudioSource>(); //construyo mi array con todos los audiosource
 
-        allSounds = GetComponentsInChildren<AudioSource>();
+        for (int i = 0; i < allSounds.Length; i++) //lleno el diccionario de pares string-audiosource
+        {
+            string s = allSounds[i].ToString(); //convierto a string
+            s = s.Substring(0, s.Length - 26); //formateo para que no me quede (UnityEngine.AudioSource) en cada nombre
+            sound.Add(s, allSounds[i]);
+            print("agregue el key " + s + " con value " + allSounds[i]+ " al diccionario");
+        }
+
+        volumenDeseadoScreamer = sound["Screamer1SFX"].volume; //ojo, esto significa que los 2 screamers tendran el mismo volumen
 
         if (finalUsb != null)
         {
             finalUsb.OnFinalUSBPickup += TurnOnFinalAlarm; //suscribo el metodo PrenderAlarmas al evento
         }
-
-        //soundDictionary.Add("tos0", tos0);
-        //PlayByName("tos0");
     }
 
     void Update()
@@ -103,52 +61,68 @@ public class AudioManager : MonoBehaviour
     }
 
     //ARRANCAN LOS METODOS
+
+    public void PlayByName(string clipName) //el mas groso. le das el string y te da play a ese audio. muy global y sencillo.
+    {
+        AudioSource sound;
+        sound = this.sound[clipName];
+        sound.Play();
+        print(sound);
+    }
+    public void StopByName(string clipName)
+    {
+        AudioSource sound;
+        sound = this.sound[clipName];
+        sound.Stop();
+    }
+
+
     //BACKGROUNDMUSIC
     public void PlayBGM()
     {
-        bgm.Play();
+        sound["BackgroundMusic"].Play();
     }
     public void StopBGM()
     {
-        bgm.Stop();
+        sound["BackgroundMusic"].Stop();
     }
     public void FadeInBGM(float fadetime)
     {
         float timer = Time.time / fadetime;
-        bgm.volume = Mathf.Lerp(0, 1, timer);
+        sound["BackgroundMusic"].volume = Mathf.Lerp(0, 1, timer);
     }
     public void FadeOutBGM(float fadetime)
     {
         float timer = Time.time / fadetime;
-        bgm.volume = Mathf.Lerp(1, 0, timer);
+        sound["BackgroundMusic"].volume = Mathf.Lerp(1, 0, timer);
     }
 
     //MAIN MENU MUSIC
     public void PlayMainMenuMusic()
     {
-        mainMenuMusic.Play();
+        sound["MainMenuMusic"].Play();
     }
     public void StopMainMenuMusic()
     {
-        mainMenuMusic.Stop();
+        sound["MainMenuMusic"].Stop();
     }
 
     //ALARMAS
     public void PlayAlarmaNorway()
     {
-        alarmaNorway.Play();
+        sound["AlarmaNorway"].Play();
     }
     public void StopAlarmaNorway()
     {
-        alarmaNorway.Stop();
+        sound["AlarmaNorway"].Stop();
     }
     public void PlayAlarmaTriple()
     {
-        alarmaTriple.Play();
+        sound["AlarmaTriple"].Play();
     }
     public void StopAlarmaTriple()
     {
-        alarmaTriple.Stop();
+        sound["AlarmaTriple"].Stop();
     }
     public void TurnOnFinalAlarm()
     {
@@ -163,15 +137,15 @@ public class AudioManager : MonoBehaviour
         switch (_explosionCycleIndex)
         {
             case 0:
-                derrumbe0.Play();
+                sound["Derrumbe01"].Play();
                 break;
 
             case 1:
-                derrumbe1.Play();
+                sound["Derrumbe02"].Play();
                 break;
 
             case 2:
-                derrumbe2.Play();
+                sound["Derrumbe03"].Play();
                 break;
 
             default:
@@ -184,8 +158,8 @@ public class AudioManager : MonoBehaviour
     {
         bool anyTosIsPlaying = false;
 
-        if (tos0.isPlaying || tos1.isPlaying ||
-            tos2.isPlaying || tos3.isPlaying)
+        if (sound["Tos0"].isPlaying || sound["Tos1"].isPlaying ||
+            sound["Tos2"].isPlaying || sound["Tos3"].isPlaying)
         {
             anyTosIsPlaying = true;
         }
@@ -197,125 +171,116 @@ public class AudioManager : MonoBehaviour
             switch (_tosCycleIndex)
             {
                 case 0:
-                    tos0.pitch = randomPitch;
-                    tos0.Play();
+                    sound["Tos0"].pitch = randomPitch;
+                    sound["Tos0"].Play();
                     break;
 
                 case 1:
-                    tos1.pitch = randomPitch;
-                    tos1.Play();
+                    sound["Tos1"].pitch = randomPitch;
+                    sound["Tos1"].Play();
                     break;
 
                 case 2:
-                    tos2.pitch = randomPitch;
-                    tos2.Play();
+                    sound["Tos2"].pitch = randomPitch;
+                    sound["Tos2"].Play();
                     break;
 
                 case 3:
-                    tos3.pitch = randomPitch;
-                    tos3.Play();
+                    sound["Tos3"].pitch = randomPitch;
+                    sound["Tos3"].Play();
                     break;
 
                 default:
                     break;
             }
-
             _tosCycleIndex = (_tosCycleIndex + 1) % 4;
         }
-
     }
-
-    //public void PlayByName(string clipName)
-    //{
-    //    AudioSource sound;
-    //    sound = soundDictionary[clipName];
-    //    sound.Play();
-    //    print(sound);
-    //}
+  
 
     public void PlayHollowRoar(Vector3 pos, float delayTime, float p)
     {
-        if (!hollowRoar.isPlaying)
+        if (!sound["HollowRoarSFX"].isPlaying)
         {
-            hollowRoar.pitch = p;
-            hollowRoar.gameObject.transform.position = pos; //muevo al audiosource
-            hollowRoar.PlayDelayed(delayTime);
+            sound["HollowRoarSFX"].pitch = p;
+            sound["HollowRoarSFX"].gameObject.transform.position = pos; //muevo al audiosource
+            sound["HollowRoarSFX"].PlayDelayed(delayTime);
         }
     }
     public void PlayPickup(float p)
     {
-        pickup.pitch = p;
-        pickup.Play();
+        sound["PickupSFX"].pitch = p;
+        sound["PickupSFX"].Play();
     }
     public void PlayTPToCheckpoint()
     {
-        tpToCheckpoint.Play();
+        sound["TPToCheckpoint"].Play();
     }
     public void PlayAccessDenied()
     {
-        accessDenied.Play();
+        sound["AccessDeniedSFX"].Play();
     }
     public void PlayHeavyBreathing()
     {
         float randomPitch = Random.Range(0.95f, 1.05f);
-        if (!heavyBreathing.isPlaying)
+        if (!sound["HeavyBreathing"].isPlaying)
         {
-            heavyBreathing.volume = 0.8f;
-            heavyBreathing.pitch = randomPitch;
-            heavyBreathing.Play();
-            StartCoroutine(FadeAudioSource.StartFade(heavyBreathing, 15, 0.8f, 0));
+            sound["HeavyBreathing"].volume = 0.8f;
+            sound["HeavyBreathing"].pitch = randomPitch;
+            sound["HeavyBreathing"].Play();
+            StartCoroutine(FadeAudioSource.StartFade(sound["HeavyBreathing"], 15, 0.8f, 0));
         }
     }
 
     //PRESSURE PLATE SFX
     public void PlayPPlateOn(Vector3 pos)
     {
-        pPlateOn.gameObject.transform.position = pos; //muevo al audiosource
-        pPlateOn.Play();
+        sound["PPlateOn"].gameObject.transform.position = pos; //muevo al audiosource
+        sound["PPlateOn"].Play();
     }
     public void PlayPPlateOff(Vector3 pos)
     {
-        pPlateOff.gameObject.transform.position = pos; 
-        pPlateOff.Play();
+        sound["PPlateOff"].gameObject.transform.position = pos;
+        sound["PPlateOff"].Play();
     }
     public void PlayBigLightSwitch()
     {
         float randomPitch = Random.Range(0.9f, 1.1f);
-        bigLightSwitch.pitch = randomPitch;
-        bigLightSwitch.Play();
+        sound["BigLightSwitchSFX"].pitch = randomPitch;
+        sound["BigLightSwitchSFX"].Play();
     }
 
     //PUERTAS
     public void PlayDoorOpen(Vector3 pos)
     {
         float randomPitch = Random.Range(0.95f, 1.05f);
-        doorOpen.pitch = randomPitch;
-        doorOpen.gameObject.transform.position = pos;
-        doorOpen.Play();
+        sound["DoorOpenSFX"].pitch = randomPitch;
+        sound["DoorOpenSFX"].gameObject.transform.position = pos;
+        sound["DoorOpenSFX"].Play();
     }
     public void PlayDoorClose(Vector3 pos)
     {
         float randomPitch = Random.Range(0.95f, 1.05f);
-        doorClose.pitch = randomPitch;
-        doorClose.gameObject.transform.position = pos;
-        doorClose.Play();
+        sound["DoorCloseSFX"].pitch = randomPitch;
+        sound["DoorCloseSFX"].gameObject.transform.position = pos;
+        sound["DoorCloseSFX"].Play();
     }
 
     //SCREAMER
     public void PlayScreamer(int screamerID)
     {
-        screamer1.Stop();
-        screamer2.Stop();
+        sound["Screamer1SFX"].Stop();
+        sound["Screamer2SFX"].Stop();
         switch (screamerID)
         {
             case 1:
-                screamer1.volume = volumenDeseadoScreamer;   //para resetear el volumen en caso de que otro metodo lo haya alterado
-                screamer1.Play();
+                sound["Screamer1SFX"].volume = volumenDeseadoScreamer;   //para resetear el volumen en caso de que otro metodo lo haya alterado
+                sound["Screamer1SFX"].Play();
                 break;
 
             case 2:
-                screamer2.volume = volumenDeseadoScreamer;   //para resetear el volumen en caso de que otro metodo lo haya alterado
-                screamer2.Play();
+                sound["Screamer2SFX"].volume = volumenDeseadoScreamer;   //para resetear el volumen en caso de que otro metodo lo haya alterado
+                sound["Screamer2SFX"].Play();
                 break;
 
             default:
@@ -329,11 +294,11 @@ public class AudioManager : MonoBehaviour
         switch (screamerID)
         {
             case 1:
-                screamer1.volume = Mathf.Lerp(1, 0, timer);
+                sound["Screamer1SFX"].volume = Mathf.Lerp(1, 0, timer);
                 break;
 
             case 2:
-                screamer2.volume = Mathf.Lerp(1, 0, timer);
+                sound["Screamer2SFX"].volume = Mathf.Lerp(1, 0, timer);
                 break;
 
             default:
@@ -345,11 +310,11 @@ public class AudioManager : MonoBehaviour
         switch (screamerID)
         {
             case 1:
-                screamer1.Stop();
+                sound["Screamer1SFX"].Stop();
                 break;
 
             case 2:
-                screamer2.Stop();
+                sound["Screamer2SFX"].Stop();
                 break;
 
             default:
@@ -360,11 +325,11 @@ public class AudioManager : MonoBehaviour
     //LINTERNA ON/OFF
     public void PlayLinternaOn()
     {
-        linternaOn.Play();
+        sound["LinternaOnSFX"].Play();
     }
     public void PlayLinternaOff()
     {
-        linternaOff.Play();
+        sound["LinternaOffSFX"].Play();
     }
 
     //PASOS
@@ -372,70 +337,70 @@ public class AudioManager : MonoBehaviour
     {
         if (!isRunning)
         {
-            if (pasos1.isPlaying == false && pasos2.isPlaying == false) //solo da play si no estaba sonando ya
+            if (sound["Pasos1"].isPlaying == false && sound["Pasos2"].isPlaying == false) //solo da play si no estaba sonando ya
             {
                 float randomPitch = Random.Range(0.95f, 1.05f); // para un poquito de variedad
                 int randomClip = Random.Range(0, 2); // 50/50 chances de reproducir uno o el otro
                 if (randomClip == 0)
                 {
-                    pasos1.pitch = randomPitch;
-                    pasos1.Play();
+                    sound["Pasos1"].pitch = randomPitch;
+                    sound["Pasos1"].Play();
                 }
                 else
                 {
-                    pasos2.pitch = randomPitch;
-                    pasos2.Play();
+                    sound["Pasos2"].pitch = randomPitch;
+                    sound["Pasos2"].Play();
                 }
             }
         }
         else
         {
-            if (pasos1.isPlaying == false && pasos2.isPlaying == false) //solo da play si no estaba sonando ya
+            if (sound["Pasos1"].isPlaying == false && sound["Pasos2"].isPlaying == false) //solo da play si no estaba sonando ya
             {
                 float randomPitch = Random.Range(1.1f, 1.2f); // para un poquito de variedad
                 int randomClip = Random.Range(0, 2); // 50/50 chances de reproducir uno o el otro
                 if (randomClip == 0)
                 {
-                    pasos1.pitch = randomPitch;
-                    pasos1.Play();
+                    sound["Pasos1"].pitch = randomPitch;
+                    sound["Pasos1"].Play();
                 }
                 else
                 {
-                    pasos2.pitch = randomPitch;
-                    pasos2.Play();
+                    sound["Pasos2"].pitch = randomPitch;
+                    sound["Pasos2"].Play();
                 }
             }
         }
     }
     public void StopPasos()
     {
-        pasos1.Stop();
-        pasos2.Stop();
+        sound["Pasos1"].Stop();
+        sound["Pasos2"].Stop();
     }
     public void ChangePitchPasos(bool keyDown) //asi cuando corres suenan distinto
     {
         if (keyDown)
         {
             float randomPitch = Random.Range(1.1f, 1.2f);
-            pasos1.pitch = randomPitch;
-            pasos2.pitch = randomPitch;
+            sound["Pasos1"].pitch = randomPitch;
+            sound["Pasos2"].pitch = randomPitch;
         }
         else
         {
             float randomPitch = Random.Range(0.95f, 1.05f);
-            pasos1.pitch = randomPitch;
-            pasos2.pitch = randomPitch;
+            sound["Pasos1"].pitch = randomPitch;
+            sound["Pasos2"].pitch = randomPitch;
         }
     }
 
     //SALTO
     public void PlayJumpUp()
     {
-        if (!jumpUp.isPlaying)
+        if (!sound["JumpUpSFX"].isPlaying)
         {
-            float randomPitch = Random.Range(0.95f, 1.05f); 
-            jumpUp.pitch = randomPitch;
-            jumpUp.Play();
+            float randomPitch = Random.Range(0.95f, 1.05f);
+            sound["JumpUpSFX"].pitch = randomPitch;
+            sound["JumpUpSFX"].Play();
             jumpDownIsReady = true;
         }
     }
@@ -443,11 +408,11 @@ public class AudioManager : MonoBehaviour
     {
         if (jumpDownIsReady)
         {
-            if (!jumpDown.isPlaying)
+            if (!sound["JumpDownSFX"].isPlaying)
             {
                 float randomPitch = Random.Range(0.95f, 1.05f);
-                jumpDown.pitch = randomPitch;
-                jumpDown.Play();
+                sound["JumpDownSFX"].pitch = randomPitch;
+                sound["JumpDownSFX"].Play();
                 jumpDownIsReady = false;
             }
         }
@@ -457,53 +422,53 @@ public class AudioManager : MonoBehaviour
 
     public void PlayBoostOn()
     {
-        boostOn.Play();
+        sound["BoostOn"].Play();
     }
 
     public void PlayBoostOff()
     {
-        boostOff.Play();
+        sound["BoostOff"].Play();
     }
     
     //ZOMBIE EXPLOSIVO
     public void PlayZExplosion(Vector3 position)
     {
-        zombieExplosion.transform.position = position;
-        zombieExplosion.Play();
+        sound["ExplosionBoomer"].transform.position = position;
+        sound["ExplosionBoomer"].Play();
     }
     public void PlayZIdle()
     {
-        zombieIdle.Play();
-    }
-    public void PlayZStress()
-    {
-        zombieStress.Play();
-    }
-    public void PlayZScream()
-    {
-        zombieScream.Play();
+        sound["ZombieIdleSFX"].Play();
     }
     public void StopZIdle()
     {
-        zombieIdle.Stop();
+        sound["ZombieIdleSFX"].Stop();
     }
-    public void StopZStress()
+    public void PlayZRun()
     {
-        zombieStress.Stop();
+        sound["ZombieRun"].Play();
     }
-    public void StopZScream()
+    public void StopZRun()
     {
-        zombieScream.Stop();
+        sound["ZombieRun"].Stop();
+    }
+    public void PlayZPainScream()
+    {
+        sound["ZombiePainScream"].Play();
+    }
+    public void StopZPainScream()
+    {
+        sound["ZombiePainScream"].Stop();
     }
 
     //INVENTORY
     public void PlayInventoryOpen()
     {
-        inventoryOpen.Play();
+        sound["InventoryOpen"].Play();
     }
     public void PlayInventoryClose()
     {
-        inventoryClose.Play();
+        sound["InventoryClose"].Play();
     }
 
     //OTROS

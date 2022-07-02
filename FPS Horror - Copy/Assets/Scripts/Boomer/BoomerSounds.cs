@@ -12,8 +12,8 @@ public class BoomerSounds
 
     public void UpdateSoundsPosition()
     {
-        AudioManager.instance.zombieIdle.transform.position = boomer.transform.position;
-        AudioManager.instance.zombieStress.transform.position = boomer.transform.position;
-        AudioManager.instance.zombieScream.transform.position = boomer.transform.position;
+        AudioManager.instance.sound["ZombieIdleSFX"].transform.position = boomer.transform.position;
+        AudioManager.instance.sound["ZombieRun"].transform.position = boomer.transform.position;
+        AudioManager.instance.sound["ZombiePainScream"].transform.position = boomer.transform.position;
     }
 }

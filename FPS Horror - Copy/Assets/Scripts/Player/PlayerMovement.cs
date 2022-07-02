@@ -164,7 +164,7 @@ public class PlayerMovement : MonoBehaviour, IRalentizable, IMicroGravity
         {
             _speedModifier = 0.5f;
         }
-        AudioManager.instance.TriggerSound(AudioManager.instance.geigerCounter, 2, 0, 1, true);
+        AudioManager.instance.TriggerSound(AudioManager.instance.sound["GeigerCounter"], 2, 0, 1, true);
     }
     public void ExitSlow()
     {
@@ -172,7 +172,7 @@ public class PlayerMovement : MonoBehaviour, IRalentizable, IMicroGravity
         {
             _speedModifier = 1;
         }
-        AudioManager.instance.TriggerSound(AudioManager.instance.geigerCounter, 2, 0, 1, false);
+        AudioManager.instance.TriggerSound(AudioManager.instance.sound["GeigerCounter"], 2, 0, 1, false);
     }
 
     public void EnterMicroGravity()
@@ -181,7 +181,7 @@ public class PlayerMovement : MonoBehaviour, IRalentizable, IMicroGravity
         gravityValue = gravityValueOnMicroGravity;
         jumpHeight = jumpHeightOnMicroGravity;
         _speedModifier = speedModifierOnMicroGravity;
-        AudioManager.instance.TriggerSound(AudioManager.instance.microGravityOn, 0.5f, 0, 1, true);
+        AudioManager.instance.TriggerSound(AudioManager.instance.sound["MicroGravityOn"], 0.5f, 0, 1, true);
     }
 
     public void ExitMicroGravity()
@@ -190,7 +190,7 @@ public class PlayerMovement : MonoBehaviour, IRalentizable, IMicroGravity
         gravityValue = initialGravityValue;
         jumpHeight = initialJumpHeight;
         _speedModifier = 1;
-        AudioManager.instance.TriggerSound(AudioManager.instance.microGravityOff, 0.5f, 0, 1, true);
+        AudioManager.instance.TriggerSound(AudioManager.instance.sound["MicroGravityOff"], 0.5f, 0, 1, true);
 
     }
 
