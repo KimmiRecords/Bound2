@@ -48,6 +48,15 @@ public class Controls
             isJump = false;
         }
 
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            _playerMovement.StartSpeedBoost();
+        }
+
+
+
+        //CHEATS
+
         if (Input.GetKeyDown(KeyCode.U))
         {
             PlayerStats.instance.UsbsCollected++;
@@ -66,9 +75,10 @@ public class Controls
             Debug.Log("CHEAT: conseguiste la linterna");
         }
 
-        if (Input.GetKeyDown(KeyCode.T))
+        if (Input.GetKeyDown(KeyCode.Numlock))
         {
-            _playerMovement.StartSpeedBoost();
+            PlayerStats.instance.SpeedBoosts++;
+            Debug.Log("CHEAT: conseguiste 1 speedboost");
         }
     }
 }

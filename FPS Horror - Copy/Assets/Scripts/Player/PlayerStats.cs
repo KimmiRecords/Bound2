@@ -183,7 +183,6 @@ public class PlayerStats : MonoBehaviour, IGaseable, IGraviFloorDamageable
 
     public void EnterGas()
     {
-        print("playerstats: el player entro al gas");
         AudioManager.instance.PlayTos();
     }
 
