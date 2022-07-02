@@ -16,6 +16,7 @@ public class Instructions : MonoBehaviour
     public Transform Camera2;
 
     public GameObject usbsgroup;
+    public GameObject objectiveRedAccents;
 
     private Color _controlsInitialColor;
     private Color _objectiveRedInitialColor;
@@ -51,22 +52,22 @@ public class Instructions : MonoBehaviour
         //MOVIMIENTO CINEMATICO DE LA CAMARA
         //HAGO QUE VAYA DESDE LA POSICION Y ROTACION INICIAL HASTA LAS NUEVAS
 
-        MainCamera.position = Vector3.Lerp(MainCamera.position, Camera2.position, _cameraTimer);
-        MainCamera.rotation = Quaternion.Lerp(MainCamera.rotation, Camera2.rotation, _cameraTimer);
+        //MainCamera.position = Vector3.Lerp(MainCamera.position, Camera2.position, _cameraTimer);
+        //MainCamera.rotation = Quaternion.Lerp(MainCamera.rotation, Camera2.rotation, _cameraTimer);
 
 
-        ////lerpeo la posicion de la maincamera, desde su posicion inicial hasta la de la camera2
-        //MainCamera.position = new Vector3(Mathf.Lerp(MainCamera.position.x, Camera2.position.x, cameraTimer),
-        //                                   Mathf.Lerp(MainCamera.position.y, Camera2.position.y, cameraTimer),
-        //                                   Mathf.Lerp(MainCamera.position.z, Camera2.position.z, cameraTimer));
+        //lerpeo la posicion de la maincamera, desde su posicion inicial hasta la de la camera2
+        MainCamera.position = new Vector3(Mathf.Lerp(MainCamera.position.x, Camera2.position.x, _cameraTimer),
+                                           Mathf.Lerp(MainCamera.position.y, Camera2.position.y, _cameraTimer),
+                                           Mathf.Lerp(MainCamera.position.z, Camera2.position.z, _cameraTimer));
 
 
-        ////misma pero para la rotacion, sin embargo...
-        ////parece que funciona, pero hace que la camara se vuelva loca y gire como trompo.
-        ////queda muy copado y lo voy a dejar
-        //MainCamera.rotation = Quaternion.Euler(Mathf.Lerp(MainCamera.rotation.eulerAngles.z, Camera2.rotation.eulerAngles.z, cameraTimer),
-        //                                       Mathf.Lerp(MainCamera.rotation.eulerAngles.y, Camera2.rotation.eulerAngles.y, cameraTimer),
-        //                                       Mathf.Lerp(MainCamera.rotation.eulerAngles.x, Camera2.rotation.eulerAngles.x, cameraTimer));
+        //misma pero para la rotacion, sin embargo...
+        //parece que funciona, pero hace que la camara se vuelva loca y gire como trompo.
+        //queda muy copado y lo voy a dejar
+        MainCamera.rotation = Quaternion.Euler(Mathf.Lerp(MainCamera.rotation.eulerAngles.z, Camera2.rotation.eulerAngles.z, _cameraTimer),
+                                               Mathf.Lerp(MainCamera.rotation.eulerAngles.y, Camera2.rotation.eulerAngles.y, _cameraTimer),
+                                               Mathf.Lerp(MainCamera.rotation.eulerAngles.x, Camera2.rotation.eulerAngles.x, _cameraTimer));
 
 
         //LOGICA DEL CANVAS
@@ -93,6 +94,7 @@ public class Instructions : MonoBehaviour
             //y muestra las instrus
             objectiveRed.color = new Color(_objectiveRedInitialColor.r, _objectiveRedInitialColor.g, _objectiveRedInitialColor.b, Mathf.Lerp(0, 1, _timer-0.5f));
             objectiveWhite.color = new Color(1, 1, 1, Mathf.Lerp(0, 1, _timer-0.5f));
+            Invoke("ShowRedAccents", 3);
 
             //hago aparecer el usb group
             Invoke("ShowUSBGroup", 6);
@@ -114,14 +116,23 @@ public class Instructions : MonoBehaviour
             AudioManager.instance.StopMainMenuMusic();
             Destroy(AudioManager.instance.gameObject);
 
-
             //AudioManager.instance.PlayBGM();
             SceneManager.LoadScene("EscenarioDePrueba"); //5 es la escena de prueba
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
         }
     }
 
     void ShowUSBGroup()
     {
         usbsgroup.SetActive(true);
+    }
+
+    void ShowRedAccents()
+    {
+        objectiveRedAccents.SetActive(true);
     }
 }

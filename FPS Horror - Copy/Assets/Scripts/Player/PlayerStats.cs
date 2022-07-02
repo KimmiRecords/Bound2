@@ -38,6 +38,9 @@ public class PlayerStats : MonoBehaviour, IGaseable, IGraviFloorDamageable
     public bool hasCardKey = false;
 
     [HideInInspector]
+    public bool isPaused = false;
+
+    [HideInInspector]
     public Vector3 lastCheckpoint;
 
     float _playerHp;
@@ -145,7 +148,10 @@ public class PlayerStats : MonoBehaviour, IGaseable, IGraviFloorDamageable
     }
     public void TakeDamage(float dmg)
     {
-        PlayerHp -= dmg;
+        if (!isPaused)
+        {
+            PlayerHp -= dmg;
+        }
 
         if (_playerHp <= 0)
         {
