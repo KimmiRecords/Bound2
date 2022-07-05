@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class DialoguePopup : InfoPopup
 {
+    [SerializeField]
     private Color dialogueColor;
 
     void Start()

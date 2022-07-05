@@ -11,6 +11,7 @@ public class InfoPopup : Subs
     protected Interactable yo;
     public MouseLook mouseLook;
 
+    [SerializeField]
     private Color infoColor;
 
 
@@ -25,8 +26,6 @@ public class InfoPopup : Subs
         {
             mouseLook = FindObjectOfType<MouseLook>();
         }
-
-        infoColor = new Color(225f/255f, 179f/255f, 179f/255f, 1); //rosita
     }
 
     void Update()
