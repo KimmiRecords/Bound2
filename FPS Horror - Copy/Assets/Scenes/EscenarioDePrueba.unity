@@ -3840,6 +3840,7 @@ MonoBehaviour:
   desiredTime: 2
   subsCanvasText: {fileID: 1050959956}
   mouseLook: {fileID: 6567147963254830201}
+  infoColor: {r: 0.88235295, g: 0.7019608, b: 0.7019608, a: 1}
 --- !u!114 &198216362 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4945978239522745644, guid: 1cc807596bb680c4cb879988a2bef0c9,
@@ -5694,6 +5695,26 @@ PrefabInstance:
       propertyPath: subsCanvasText
       value: 
       objectReference: {fileID: 1050959956}
+    - target: {fileID: 8000801459520546963, guid: a7a7571bbbdb86043a31284591d59fbb,
+        type: 3}
+      propertyPath: dialogueColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8000801459520546963, guid: a7a7571bbbdb86043a31284591d59fbb,
+        type: 3}
+      propertyPath: dialogueColor.b
+      value: 0.47058824
+      objectReference: {fileID: 0}
+    - target: {fileID: 8000801459520546963, guid: a7a7571bbbdb86043a31284591d59fbb,
+        type: 3}
+      propertyPath: dialogueColor.g
+      value: 0.8039216
+      objectReference: {fileID: 0}
+    - target: {fileID: 8000801459520546963, guid: a7a7571bbbdb86043a31284591d59fbb,
+        type: 3}
+      propertyPath: dialogueColor.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8910123493861026836, guid: a7a7571bbbdb86043a31284591d59fbb,
         type: 3}
       propertyPath: m_Name
@@ -17538,7 +17559,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-119126
+  m_Name: pb_Mesh-131714
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -18569,6 +18590,26 @@ PrefabInstance:
       propertyPath: subsCanvasText
       value: 
       objectReference: {fileID: 1050959956}
+    - target: {fileID: 8000801459520546963, guid: a7a7571bbbdb86043a31284591d59fbb,
+        type: 3}
+      propertyPath: dialogueColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8000801459520546963, guid: a7a7571bbbdb86043a31284591d59fbb,
+        type: 3}
+      propertyPath: dialogueColor.b
+      value: 0.47058824
+      objectReference: {fileID: 0}
+    - target: {fileID: 8000801459520546963, guid: a7a7571bbbdb86043a31284591d59fbb,
+        type: 3}
+      propertyPath: dialogueColor.g
+      value: 0.8039216
+      objectReference: {fileID: 0}
+    - target: {fileID: 8000801459520546963, guid: a7a7571bbbdb86043a31284591d59fbb,
+        type: 3}
+      propertyPath: dialogueColor.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8910123493861026836, guid: a7a7571bbbdb86043a31284591d59fbb,
         type: 3}
       propertyPath: m_Name
@@ -23821,6 +23862,26 @@ PrefabInstance:
       propertyPath: subsCanvasText
       value: 
       objectReference: {fileID: 1050959956}
+    - target: {fileID: 8000801459520546963, guid: a7a7571bbbdb86043a31284591d59fbb,
+        type: 3}
+      propertyPath: dialogueColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8000801459520546963, guid: a7a7571bbbdb86043a31284591d59fbb,
+        type: 3}
+      propertyPath: dialogueColor.b
+      value: 0.47058824
+      objectReference: {fileID: 0}
+    - target: {fileID: 8000801459520546963, guid: a7a7571bbbdb86043a31284591d59fbb,
+        type: 3}
+      propertyPath: dialogueColor.g
+      value: 0.8039216
+      objectReference: {fileID: 0}
+    - target: {fileID: 8000801459520546963, guid: a7a7571bbbdb86043a31284591d59fbb,
+        type: 3}
+      propertyPath: dialogueColor.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8910123493861026836, guid: a7a7571bbbdb86043a31284591d59fbb,
         type: 3}
       propertyPath: m_Name
@@ -29958,6 +30019,7 @@ MonoBehaviour:
   desiredTime: 3
   subsCanvasText: {fileID: 1050959956}
   mouseLook: {fileID: 6567147963254830201}
+  infoColor: {r: 0.88235295, g: 0.7019608, b: 0.7019608, a: 1}
 --- !u!65 &1362015299
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -31081,6 +31143,7 @@ MonoBehaviour:
   desiredTime: 3
   subsCanvasText: {fileID: 1050959956}
   mouseLook: {fileID: 6567147963254830201}
+  infoColor: {r: 0.88235295, g: 0.7019608, b: 0.7019608, a: 1}
 --- !u!1 &1432147292
 GameObject:
   m_ObjectHideFlags: 0
@@ -33393,6 +33456,26 @@ PrefabInstance:
       propertyPath: subsCanvasText
       value: 
       objectReference: {fileID: 1050959956}
+    - target: {fileID: 8000801459520546963, guid: a7a7571bbbdb86043a31284591d59fbb,
+        type: 3}
+      propertyPath: dialogueColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8000801459520546963, guid: a7a7571bbbdb86043a31284591d59fbb,
+        type: 3}
+      propertyPath: dialogueColor.b
+      value: 0.47058824
+      objectReference: {fileID: 0}
+    - target: {fileID: 8000801459520546963, guid: a7a7571bbbdb86043a31284591d59fbb,
+        type: 3}
+      propertyPath: dialogueColor.g
+      value: 0.8039216
+      objectReference: {fileID: 0}
+    - target: {fileID: 8000801459520546963, guid: a7a7571bbbdb86043a31284591d59fbb,
+        type: 3}
+      propertyPath: dialogueColor.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8910123493861026836, guid: a7a7571bbbdb86043a31284591d59fbb,
         type: 3}
       propertyPath: m_Name
@@ -35472,6 +35555,26 @@ PrefabInstance:
       propertyPath: subsCanvasText
       value: 
       objectReference: {fileID: 1050959956}
+    - target: {fileID: 8000801459520546963, guid: a7a7571bbbdb86043a31284591d59fbb,
+        type: 3}
+      propertyPath: dialogueColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8000801459520546963, guid: a7a7571bbbdb86043a31284591d59fbb,
+        type: 3}
+      propertyPath: dialogueColor.b
+      value: 0.47058824
+      objectReference: {fileID: 0}
+    - target: {fileID: 8000801459520546963, guid: a7a7571bbbdb86043a31284591d59fbb,
+        type: 3}
+      propertyPath: dialogueColor.g
+      value: 0.8039216
+      objectReference: {fileID: 0}
+    - target: {fileID: 8000801459520546963, guid: a7a7571bbbdb86043a31284591d59fbb,
+        type: 3}
+      propertyPath: dialogueColor.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8910123493861026836, guid: a7a7571bbbdb86043a31284591d59fbb,
         type: 3}
       propertyPath: m_Name
@@ -39327,6 +39430,26 @@ PrefabInstance:
       propertyPath: subsCanvasText
       value: 
       objectReference: {fileID: 1050959956}
+    - target: {fileID: 8000801459520546963, guid: a7a7571bbbdb86043a31284591d59fbb,
+        type: 3}
+      propertyPath: dialogueColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8000801459520546963, guid: a7a7571bbbdb86043a31284591d59fbb,
+        type: 3}
+      propertyPath: dialogueColor.b
+      value: 0.47058824
+      objectReference: {fileID: 0}
+    - target: {fileID: 8000801459520546963, guid: a7a7571bbbdb86043a31284591d59fbb,
+        type: 3}
+      propertyPath: dialogueColor.g
+      value: 0.8039216
+      objectReference: {fileID: 0}
+    - target: {fileID: 8000801459520546963, guid: a7a7571bbbdb86043a31284591d59fbb,
+        type: 3}
+      propertyPath: dialogueColor.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8910123493861026836, guid: a7a7571bbbdb86043a31284591d59fbb,
         type: 3}
       propertyPath: m_Name
@@ -42612,7 +42735,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh85822
+  m_Name: pb_Mesh240170
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -42943,6 +43066,26 @@ PrefabInstance:
       propertyPath: subsCanvasText
       value: 
       objectReference: {fileID: 1050959956}
+    - target: {fileID: 8000801459520546963, guid: a7a7571bbbdb86043a31284591d59fbb,
+        type: 3}
+      propertyPath: dialogueColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8000801459520546963, guid: a7a7571bbbdb86043a31284591d59fbb,
+        type: 3}
+      propertyPath: dialogueColor.b
+      value: 0.47058824
+      objectReference: {fileID: 0}
+    - target: {fileID: 8000801459520546963, guid: a7a7571bbbdb86043a31284591d59fbb,
+        type: 3}
+      propertyPath: dialogueColor.g
+      value: 0.8039216
+      objectReference: {fileID: 0}
+    - target: {fileID: 8000801459520546963, guid: a7a7571bbbdb86043a31284591d59fbb,
+        type: 3}
+      propertyPath: dialogueColor.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8910123493861026836, guid: a7a7571bbbdb86043a31284591d59fbb,
         type: 3}
       propertyPath: m_Name
@@ -47348,6 +47491,21 @@ PrefabInstance:
         type: 3}
       propertyPath: desiredText
       value: press E to view files stored in your USBs
+      objectReference: {fileID: 0}
+    - target: {fileID: 457406879252921173, guid: ad6225bf60f34e547aa8555880755d83,
+        type: 3}
+      propertyPath: infoColor.b
+      value: 0.7019608
+      objectReference: {fileID: 0}
+    - target: {fileID: 457406879252921173, guid: ad6225bf60f34e547aa8555880755d83,
+        type: 3}
+      propertyPath: infoColor.g
+      value: 0.7019608
+      objectReference: {fileID: 0}
+    - target: {fileID: 457406879252921173, guid: ad6225bf60f34e547aa8555880755d83,
+        type: 3}
+      propertyPath: infoColor.r
+      value: 0.88235295
       objectReference: {fileID: 0}
     - target: {fileID: 457406879252921173, guid: ad6225bf60f34e547aa8555880755d83,
         type: 3}
@@ -58133,6 +58291,26 @@ PrefabInstance:
       propertyPath: subsCanvasText
       value: 
       objectReference: {fileID: 1050959956}
+    - target: {fileID: 8000801459520546963, guid: a7a7571bbbdb86043a31284591d59fbb,
+        type: 3}
+      propertyPath: dialogueColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8000801459520546963, guid: a7a7571bbbdb86043a31284591d59fbb,
+        type: 3}
+      propertyPath: dialogueColor.b
+      value: 0.47058824
+      objectReference: {fileID: 0}
+    - target: {fileID: 8000801459520546963, guid: a7a7571bbbdb86043a31284591d59fbb,
+        type: 3}
+      propertyPath: dialogueColor.g
+      value: 0.8039216
+      objectReference: {fileID: 0}
+    - target: {fileID: 8000801459520546963, guid: a7a7571bbbdb86043a31284591d59fbb,
+        type: 3}
+      propertyPath: dialogueColor.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8910123493861026836, guid: a7a7571bbbdb86043a31284591d59fbb,
         type: 3}
       propertyPath: m_Name
@@ -58765,6 +58943,21 @@ PrefabInstance:
       propertyPath: mouseLook
       value: 
       objectReference: {fileID: 6567147963254830201}
+    - target: {fileID: 2542155326360645242, guid: 9231819ec8ae6484bb6a9f5483e66044,
+        type: 3}
+      propertyPath: infoColor.b
+      value: 0.7019608
+      objectReference: {fileID: 0}
+    - target: {fileID: 2542155326360645242, guid: 9231819ec8ae6484bb6a9f5483e66044,
+        type: 3}
+      propertyPath: infoColor.g
+      value: 0.7019608
+      objectReference: {fileID: 0}
+    - target: {fileID: 2542155326360645242, guid: 9231819ec8ae6484bb6a9f5483e66044,
+        type: 3}
+      propertyPath: infoColor.r
+      value: 0.88235295
+      objectReference: {fileID: 0}
     - target: {fileID: 2542155326360645242, guid: 9231819ec8ae6484bb6a9f5483e66044,
         type: 3}
       propertyPath: subsCanvasText
@@ -62687,6 +62880,7 @@ MonoBehaviour:
   desiredTime: 3
   subsCanvasText: {fileID: 1050959956}
   mouseLook: {fileID: 6567147963254830201}
+  infoColor: {r: 0.88235295, g: 0.7019608, b: 0.7019608, a: 1}
 --- !u!114 &8519491737552483262
 MonoBehaviour:
   m_ObjectHideFlags: 0

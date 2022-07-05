@@ -68,7 +68,7 @@ public class Countdown : MonoBehaviour
     {
         print("initialize todo mal");
         black.color = new Color(0, 0, 0, 1);
-        AudioManager.instance.PlayDerrumbe(0);
+        AudioManager.instance.PlayDerrumbe();
     }
 
     void CountdownEnd()
@@ -76,7 +76,7 @@ public class Countdown : MonoBehaviour
         print("countdown end");
         countdown = 0;
 
-        AudioManager.instance.PlayDerrumbe(2);
+        AudioManager.instance.PlayDerrumbe();
         //ResetCountdown(transform.position);
         playerStats.InstaDeath();
     }

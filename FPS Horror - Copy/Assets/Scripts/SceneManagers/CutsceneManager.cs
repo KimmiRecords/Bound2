@@ -119,7 +119,7 @@ public class CutsceneManager : MonoBehaviour
 
         for (int i = 0; i < explosions.Length; i++)
         {
-            AudioManager.instance.PlayDerrumbe(i);
+            AudioManager.instance.PlayDerrumbe();
             explosions[i].SetActive(true);
             print("cutscene: prendo la explosion " + i);
             yield return new WaitForSeconds(timeBetweenExplosions);

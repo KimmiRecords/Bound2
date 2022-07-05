@@ -6,10 +6,11 @@ public class Dialogue : Subs
 {
     //un tipo de sub que es vintage y amarillo que se dispara por collider
 
+    [SerializeField]
     private Color dialogueColor;
     void Start()
     {
-        dialogueColor = new Color(255f/255f, 205f/255f, 120f/255f, 1); //amarillito vintage
+        //dialogueColor = new Color(255f/255f, 205f/255f, 120f/255f, 1); //amarillito vintage
     }
 
     private void OnTriggerEnter(Collider player) //los dialogue se disparan por con colliders
