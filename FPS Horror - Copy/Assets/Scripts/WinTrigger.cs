@@ -5,8 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class WinTrigger : MonoBehaviour
 {
+    public CutscenePreloader cutscenePreloader;
     private void OnTriggerEnter(Collider other)
     {
-        SceneManager.LoadScene("FinalCutscene");   
+        cutscenePreloader.asyncLoad.allowSceneActivation = true;
+        //SceneManager.LoadScene("FinalCutscene");   
     }
 }

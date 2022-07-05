@@ -41,7 +41,7 @@ public class AudioManager : MonoBehaviour
             string s = allSounds[i].ToString(); //convierto a string
             s = s.Substring(0, s.Length - 26); //formateo para que no me quede (UnityEngine.AudioSource) en cada nombre
             sound.Add(s, allSounds[i]);
-            print("agregue el key " + s + " con value " + allSounds[i]+ " al diccionario");
+            //print("agregue el key " + s + " con value " + allSounds[i]+ " al diccionario");
         }
 
         volumenDeseadoScreamer = sound["Screamer1SFX"].volume; //ojo, esto significa que los 2 screamers tendran el mismo volumen
@@ -132,7 +132,7 @@ public class AudioManager : MonoBehaviour
 
 
     //SFX
-    public void PlayDerrumbe(int derrumbeID)
+    public void PlayDerrumbe()
     {
         switch (_explosionCycleIndex)
         {

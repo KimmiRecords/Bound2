@@ -57,10 +57,18 @@ public class MouseLook : MonoBehaviour
         if (Physics.Raycast(ray, out hit, pickUpDistance))
         {
             //Si le pegamos a algo interactable .
-            Interactable obj = hit.collider.GetComponent<Interactable>();
+            Interactable obj = hit.collider.GetComponent<Interactable>(); //llamo obj al interactable que detecte
+
             if (obj)
             {
                 sensedObj = obj;
+
+                if (sensedObj.GetComponent<InfoPopup>() != null)
+                {
+                    var sensedObjInfoPopup = sensedObj.GetComponent<InfoPopup>(); //si encima es infopopup
+                    sensedObjInfoPopup.StartShow(); //tuki, se muestra
+                }
+
                 if (obj.muestraManito)
                 {
                     manito.SetActive(true);

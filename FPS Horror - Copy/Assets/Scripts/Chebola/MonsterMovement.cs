@@ -129,7 +129,7 @@ public class MonsterMovement : MonoBehaviour, IRalentizable, IGaseable
 
                     if (_screamerReady) //ONEHIT
                     {
-                        print("este chebola se suscribio al ondeath");
+                        //print("este chebola se suscribio al ondeath");
                         PlayerStats.instance.OnDeath += ResetChebola; //ya enterate
 
                         AudioManager.instance.PlayScreamer(desiredScreamer);

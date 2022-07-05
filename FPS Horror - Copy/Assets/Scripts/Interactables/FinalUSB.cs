@@ -8,17 +8,12 @@ public class FinalUSB : USBPickup
     //ademas de ser un usbpickup normal
     //TP2 - Diego Katabian
 
-
     public delegate void MyDelegate();
     public event MyDelegate OnFinalUSBPickup;
 
-    void OnDisable()
+    public override void Interact()
     {
-        if (!this.gameObject.scene.isLoaded)
-        {
-            return;
-        }
-
+        base.Interact();
         OnFinalUSBPickup(); //se disparan todos los metodos suscritos
     }
 }

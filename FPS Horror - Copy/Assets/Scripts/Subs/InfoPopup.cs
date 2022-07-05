@@ -28,12 +28,9 @@ public class InfoPopup : Subs
         }
     }
 
-    void Update()
+    public void StartShow()
     {
-        if (mouseLook.sensedObj == yo) //los infopopup se disparan por raycast
-        {
-            Show(desiredText, desiredTime);
-        }
+        Show(desiredText, desiredTime);
     }
 
     public override void Show(string text, float time)
@@ -57,5 +54,4 @@ public class InfoPopup : Subs
         }
         Hide();
     }
-
 }
