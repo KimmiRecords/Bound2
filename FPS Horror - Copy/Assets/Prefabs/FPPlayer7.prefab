@@ -570,14 +570,14 @@ MonoBehaviour:
   walkingSpeed: 7
   runningSpeed: 10
   jumpHeight: 3
-  jumpHeightOnMicroGravity: 8
+  jumpHeightOnMicroGravityMultiplier: 1.5
   gravityValue: 20
   gravityValueOnMicroGravity: 5
   speedModifierOnMicroGravity: 0.8
   agency: 1
   boostSpeedMultiplier: 2
   boostDuration: 4
-  boostJumpAdd: 2
+  boostJumpMultiplier: 2
   controller: {fileID: 0}
   playerCamera: {fileID: 6718208575435062047}
   cameraFOVChangeDuration: 1
@@ -632,6 +632,7 @@ MonoBehaviour:
   playerFear: 0
   hasFlashlight: 0
   hasCardKey: 0
+  isPaused: 0
   lastCheckpoint: {x: 0, y: 0, z: 0}
 --- !u!114 &6718208575797854360
 MonoBehaviour:

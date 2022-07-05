@@ -14,14 +14,14 @@ public class PlayerMovement : MonoBehaviour, IRalentizable, IMicroGravity
     public float walkingSpeed;
     public float runningSpeed;
     public float jumpHeight;
-    public float jumpHeightOnMicroGravity;
+    public float jumpHeightOnMicroGravityMultiplier;
     public float gravityValue;          //gravedad extra para que quede linda la caida del salto
     public float gravityValueOnMicroGravity;
     public float speedModifierOnMicroGravity;
     public bool agency = true;
     public float boostSpeedMultiplier;
     public float boostDuration;
-    public float boostJumpAdd;
+    public float boostJumpMultiplier;
 
     float _verticalVelocity;
     float _speedModifier;
@@ -179,7 +179,8 @@ public class PlayerMovement : MonoBehaviour, IRalentizable, IMicroGravity
     {
         //IsInsideMicroGravity = true;
         gravityValue = gravityValueOnMicroGravity;
-        jumpHeight = jumpHeightOnMicroGravity;
+        jumpHeight *= jumpHeightOnMicroGravityMultiplier;
+        //print("multiplique jumpheight x " + jumpHeightOnMicroGravityMultiplier);
         _speedModifier = speedModifierOnMicroGravity;
         AudioManager.instance.TriggerSound(AudioManager.instance.sound["MicroGravityOn"], 0.5f, 0, 1, true);
     }
@@ -188,7 +189,7 @@ public class PlayerMovement : MonoBehaviour, IRalentizable, IMicroGravity
     {
         //IsInsideMicroGravity = false;
         gravityValue = initialGravityValue;
-        jumpHeight = initialJumpHeight;
+        jumpHeight *= (1 / jumpHeightOnMicroGravityMultiplier);
         _speedModifier = 1;
         AudioManager.instance.TriggerSound(AudioManager.instance.sound["MicroGravityOff"], 0.5f, 0, 1, true);
 
@@ -220,7 +221,7 @@ public class PlayerMovement : MonoBehaviour, IRalentizable, IMicroGravity
         float _timer = 0;
         float _initialFOV = playerCamera.fieldOfView;
 
-        jumpHeight += boostJumpAdd;
+        jumpHeight *= boostJumpMultiplier;
         _boostOn = true;
         AudioManager.instance.PlayBoostOn();
 
@@ -230,7 +231,7 @@ public class PlayerMovement : MonoBehaviour, IRalentizable, IMicroGravity
             playerCamera.fieldOfView = Mathf.Lerp(_initialFOV, _initialFOV + 60, _timer);
             _speedModifier = Mathf.Lerp(1, boostSpeedMultiplier, _timer);
 
-            print(_timer);
+            //print(_timer);
             yield return null;
         }
 
@@ -244,11 +245,11 @@ public class PlayerMovement : MonoBehaviour, IRalentizable, IMicroGravity
             playerCamera.fieldOfView = Mathf.Lerp(_initialFOV + 60, _initialFOV, _timer);
             _speedModifier = Mathf.Lerp(boostSpeedMultiplier, 1, _timer);
 
-            print(_timer);
+            //print(_timer);
             yield return null;
         }
 
-        jumpHeight -= boostJumpAdd;
+        jumpHeight *= (1 / boostJumpMultiplier);
         _boostOn = false;
     }
 }
