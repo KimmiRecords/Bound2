@@ -19,7 +19,7 @@ public class DialoguePopup : InfoPopup
             mouseLook = FindObjectOfType<MouseLook>();
         }
 
-        dialogueColor = new Color(255f / 255f, 205f / 255f, 120f / 255f, 1); //amarillito vintage
+        //dialogueColor = new Color(255f / 255f, 205f / 255f, 120f / 255f, 1); //amarillito vintage
 
     }
 
