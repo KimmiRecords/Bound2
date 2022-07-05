@@ -17,30 +17,15 @@ public class CutscenePreloader : MonoBehaviour
     {
         if (finalUsb != null)
         {
-            //finalUsb.OnFinalUSBPickup += StartPreload;
-            finalUsb.OnFinalUSBPickup += StartBancalaCapo;
-
+            finalUsb.OnFinalUSBPickup += StartAsyncLoader;
         }
     }
-
-    //public void StartPreload()
-    //{
-    //    //StartCoroutine("PreloadScene");
-    //    black.color = new Color(0, 0, 0, 1);
-
-    //    asyncLoad = SceneManager.LoadSceneAsync(cutsceneName, LoadSceneMode.Single);
-    //    print("arranque el loadSceneAsync de " + cutsceneName);
-    //    asyncLoad.allowSceneActivation = false;
-
-    //    black.color = new Color(0, 0, 0, 0);
-    //}
-
-    public void StartBancalaCapo()
+    public void StartAsyncLoader()
     {
-        StartCoroutine("BancalaCapo");
+        StartCoroutine("AsyncLoader");
     }
 
-    IEnumerator BancalaCapo()
+    IEnumerator AsyncLoader()
     {
         black.color = new Color(0, 0, 0, 1);
         AudioManager.instance.PlayDerrumbe();
