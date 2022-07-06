@@ -1297,6 +1297,133 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &2327050528305042505
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4659419911555576357}
+  - component: {fileID: 8491011160024875206}
+  m_Layer: 0
+  m_Name: SelfDestructionSequenceInitiated
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4659419911555576357
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2327050528305042505}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8333307007883497882}
+  m_RootOrder: 46
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &8491011160024875206
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2327050528305042505}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: a88d69bef5256f141b7dbb498e538847, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.8
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &2497195868842514243
 GameObject:
   m_ObjectHideFlags: 0
@@ -5689,6 +5816,7 @@ Transform:
   - {fileID: 8300530074740802500}
   - {fileID: 7877635121452731667}
   - {fileID: 1882422998110786847}
+  - {fileID: 4659419911555576357}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5704,51 +5832,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb153279986a0fd4faac808699f8d093, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pickup: {fileID: 8333307006519378058}
-  bgm: {fileID: 8333307007148876231}
-  screamer1: {fileID: 8333307007449795131}
-  screamer2: {fileID: 3853029276318700605}
-  mainMenuMusic: {fileID: 8333307006882764761}
-  pPlateOn: {fileID: 4856682555131587852}
-  pPlateOff: {fileID: 1778619811451210412}
-  linternaOn: {fileID: 4319303281302249390}
-  linternaOff: {fileID: 687611372846806447}
-  pasos1: {fileID: 5807442400720727461}
-  pasos2: {fileID: 4481417135171934818}
-  jumpUp: {fileID: 2490795612061276929}
-  jumpDown: {fileID: 4617234757211470298}
-  doorOpen: {fileID: 4454395804027263796}
-  doorClose: {fileID: 4304965461569393528}
-  hollowRoar: {fileID: 1452703807541305110}
-  accessDenied: {fileID: 5636015222192882993}
-  alarmaNorway: {fileID: 1120631196371661291}
-  alarmaTriple: {fileID: 294874030801885554}
-  derrumbe0: {fileID: 4766966554900509199}
-  derrumbe1: {fileID: 1045915872477105216}
-  derrumbe2: {fileID: 8094687240543305180}
-  bigLightSwitch: {fileID: 721830156664544199}
-  tpToCheckpoint: {fileID: 7832806871154810086}
-  mudSteps: {fileID: 2793868184410449199}
-  mudSteps2: {fileID: 1036471433419494130}
-  cough: {fileID: 6037537037228624914}
-  heavyBreathing: {fileID: 149046827898399901}
-  zombieStress: {fileID: 2326393772434986492}
-  zombieScream: {fileID: 7346044922383160575}
-  zombieIdle: {fileID: 8380570170879073088}
-  zombieExplosion: {fileID: 5403401580450929359}
-  gasLeak: {fileID: 4271981205439723701}
-  sewerAmbience: {fileID: 8646321804336460802}
-  inventoryOpen: {fileID: 9043891397929937329}
-  inventoryClose: {fileID: 6544689983356425343}
-  tos0: {fileID: 609202136221854619}
-  tos1: {fileID: 2707041825523080181}
-  tos2: {fileID: 8174065442829460401}
-  tos3: {fileID: 7813637965987551445}
-  geigerCounter: {fileID: 3179628137763154448}
-  boostOn: {fileID: 4345500637669305987}
-  boostOff: {fileID: 2084219677516362243}
-  microGravityOn: {fileID: 2701446168184582837}
-  microGravityOff: {fileID: 617646901185317954}
   finalUsb: {fileID: 0}
   isRunning: 0
 --- !u!1 &8473027215033407150
