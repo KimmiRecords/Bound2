@@ -67,7 +67,6 @@ public class AudioManager : MonoBehaviour
         AudioSource sound;
         sound = this.sound[clipName];
         sound.Play();
-        print(sound);
     }
     public void StopByName(string clipName)
     {
@@ -128,6 +127,7 @@ public class AudioManager : MonoBehaviour
     {
         StopAlarmaNorway();
         PlayAlarmaTriple();
+        PlayByName("SelfDestructionSequenceInitiated");
     }
 
 

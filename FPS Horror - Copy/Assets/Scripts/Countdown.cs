@@ -61,6 +61,11 @@ public class Countdown : MonoBehaviour
     void InitializeCountdown()
     {
         countdownIsRunning = true;
+        //allCountdownTexts.SetActive(true);
+    }
+
+    public void TurnOnAllCountdownTexts()
+    {
         allCountdownTexts.SetActive(true);
     }
 
