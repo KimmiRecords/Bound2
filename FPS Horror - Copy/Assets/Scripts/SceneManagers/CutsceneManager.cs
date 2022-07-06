@@ -100,7 +100,7 @@ public class CutsceneManager : MonoBehaviour
         mainCamera.transform.position = Vector3.Lerp(mainCamera.transform.position, camera2.transform.position, _cameraTimer);
         mainCamera.transform.rotation = Quaternion.Lerp(mainCamera.transform.rotation, camera2.transform.rotation, _cameraTimer);
 
-        if (textToFadeIn > 0 && Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.R))
         {
             AudioManager.instance.StopAll();
             AudioManager.instance.PlayMainMenuMusic();
