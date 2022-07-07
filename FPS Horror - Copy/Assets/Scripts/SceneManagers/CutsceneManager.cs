@@ -58,6 +58,10 @@ public class CutsceneManager : MonoBehaviour
         {
             AudioManager.instance.StopScreamer(2);
         }
+        if (AudioManager.instance.sound["SelfDestructionSequenceInitiated"].isPlaying)
+        {
+            AudioManager.instance.StopByName("SelfDestructionSequenceInitiated");
+        }
 
         AudioManager.instance.PlayAtMoment(darkCircles, darkCirclesStartingTime);
 

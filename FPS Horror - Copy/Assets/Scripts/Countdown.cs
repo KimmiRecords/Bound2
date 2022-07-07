@@ -26,7 +26,12 @@ public class Countdown : MonoBehaviour
         initialCountdownTime = countdown;
         countdownIsRunning = false;
         todoMalStart = false;
-        finalUsb.OnFinalUSBPickup += InitializeCountdown;
+
+        if (finalUsb != null)
+        {
+            finalUsb.OnFinalUSBPickup += InitializeCountdown;
+        }
+
         playerStats.OnDeath += ResetCountdown;
     }
 

@@ -9,12 +9,18 @@ public class AudioTriggers : MonoBehaviour
     //por diego katabian
 
     public string soundName;
-    public AudioSource sound;
     public float fadeDuration;
     public float initialVolume;
     public float finalVolume;
     public bool isPlay; //si le da play o stop
 
+
+    protected AudioSource sound;
+
+    public void Start()
+    {
+        sound = AudioManager.instance.sound[soundName];
+    }
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.layer == 3) //la 3 es el player

@@ -6,6 +6,11 @@ public class AudioTrigger3D : AudioTriggers
 {
     public Vector3 soundPosition;
 
+    //public void Start()
+    //{
+    //    sound = AudioManager.instance.sound[soundName];
+    //}
+
     public override void TriggerAndDestroy()
     {
         sound.transform.position = soundPosition;

@@ -13,7 +13,10 @@ public class LightsManager : MonoBehaviour
 
     private void Start()
     {
-        finalUsb.OnFinalUSBPickup += TurnOnAlarm;
+        if (finalUsb != null)
+        {
+            finalUsb.OnFinalUSBPickup += TurnOnAlarm;
+        }
     }
 
     public void TurnOnAlarm()

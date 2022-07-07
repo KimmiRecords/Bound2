@@ -35,14 +35,6 @@ public class BigLights : MonoBehaviour
         }
     }
 
-    //void TurnOn()
-    //{
-    //    for (int i = 0; i < luces.Length; i++)
-    //    {
-    //        luces[i].intensity = intensidadDeseada;
-    //    }
-    //}
-
     public IEnumerator StartTurnOn()
     {
         print("start turn on");

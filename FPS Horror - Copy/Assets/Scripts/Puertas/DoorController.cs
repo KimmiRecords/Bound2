@@ -11,7 +11,7 @@ public class DoorController : MonoBehaviour
     [HideInInspector]
     public Animator _doorAnim;
 
-    void Start()
+    void Awake()
     {
         _doorAnim = this.transform.parent.GetComponent<Animator>();
     }

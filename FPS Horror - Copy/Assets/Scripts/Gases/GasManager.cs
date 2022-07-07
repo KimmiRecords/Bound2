@@ -14,7 +14,10 @@ public class GasManager : MonoBehaviour
 
     private void Start()
     {
-        finalUsb.OnFinalUSBPickup += TurnOnGases; //suscribo mi turnongases al evento 
+        if (finalUsb != null)
+        {
+            finalUsb.OnFinalUSBPickup += TurnOnGases; //suscribo mi turnongases al evento 
+        }
     }
 
     public void TurnOnGases()

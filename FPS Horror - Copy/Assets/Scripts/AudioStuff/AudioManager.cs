@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class AudioManager : MonoBehaviour
 {
@@ -48,19 +50,13 @@ public class AudioManager : MonoBehaviour
 
         if (finalUsb != null)
         {
-            finalUsb.OnFinalUSBPickup += TurnOnFinalAlarm; //suscribo el metodo PrenderAlarmas al evento
+            if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Nivel1bis"))
+            {
+                print("audiomanager: me suscribi");
+                finalUsb.OnFinalUSBPickup += TurnOnFinalAlarm; //suscribo el metodo PrenderAlarmas al evento
+            }
         }
     }
-
-    //void Update()
-    //{
-    //    if (Input.GetKeyDown(KeyCode.Escape))
-    //    {
-    //        Application.Quit();
-    //    }
-    //}
-
-    //ARRANCAN LOS METODOS
 
     public void PlayByName(string clipName) //el mas groso. le das el string y te da play a ese audio. muy global y sencillo.
     {
@@ -125,8 +121,8 @@ public class AudioManager : MonoBehaviour
     }
     public void TurnOnFinalAlarm()
     {
-        StopAlarmaNorway();
-        PlayAlarmaTriple();
+        StopByName("AlarmaNorway");
+        PlayByName("AlarmaTriple");
         PlayByName("SelfDestructionSequenceInitiated");
     }
 

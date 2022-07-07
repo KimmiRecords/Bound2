@@ -12,7 +12,10 @@ public class TabletManager : MonoBehaviour
 
     private void Start()
     {
-        finalUsb.OnFinalUSBPickup += TurnOnTablets; //nos suscribimossss
+        if (finalUsb != null)
+        {
+            finalUsb.OnFinalUSBPickup += TurnOnTablets; //nos suscribimossss
+        }
     }
 
     public void TurnOnTablets()
