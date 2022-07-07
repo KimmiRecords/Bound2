@@ -32,6 +32,8 @@ public class MonsterMovement : MonoBehaviour, IRalentizable, IGaseable
     [HideInInspector]
     public float finalSpeed;
 
+    public string thisLevelBgm;
+
     void Start()
     {
         if (GetComponent<NavMeshAgent>() != null)
@@ -133,7 +135,7 @@ public class MonsterMovement : MonoBehaviour, IRalentizable, IGaseable
                         PlayerStats.instance.OnDeath += ResetChebola; //ya enterate
 
                         AudioManager.instance.PlayScreamer(desiredScreamer);
-                        AudioManager.instance.StopBGM();
+                        AudioManager.instance.StopByName(thisLevelBgm);
                         _screamerReady = false; //flags para que solo pase una vez
                         _bgmReady = true;
                     }
@@ -167,7 +169,7 @@ public class MonsterMovement : MonoBehaviour, IRalentizable, IGaseable
             AudioManager.instance.FadeOutScreamer(desiredScreamer, 10);
             AudioManager.instance.PlayHeavyBreathing();
 
-            AudioManager.instance.PlayBGM();
+            AudioManager.instance.PlayByName(thisLevelBgm);
             PlayerStats.instance.playerFear = false;
             _bgmReady = false;
         }

@@ -21,9 +21,9 @@ public class FloatInPlace : MonoBehaviour
     void Update()
     {
         _timer += Time.deltaTime;
-        _finalGrav.x = Mathf.Sin(_timer) * desiredGrav.x;
-        _finalGrav.y = Mathf.Sin(_timer) * desiredGrav.y;
-        _finalGrav.z = Mathf.Sin(_timer) * desiredGrav.z;
+        _finalGrav.x = -Mathf.Cos(_timer) * desiredGrav.x;
+        _finalGrav.y = -Mathf.Cos(_timer) * desiredGrav.y;
+        _finalGrav.z = -Mathf.Cos(_timer) * desiredGrav.z;
 
         //finalGrav = Mathf.Clamp(finalGrav, 0, 1);
 

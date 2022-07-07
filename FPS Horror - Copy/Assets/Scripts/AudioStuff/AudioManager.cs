@@ -11,7 +11,7 @@ public class AudioManager : MonoBehaviour
 
     public static AudioManager instance;
 
-    public FinalUSB finalUsb;
+    //public FinalUSB finalUsb;
 
     AudioSource[] allSounds;
     public bool isRunning;
