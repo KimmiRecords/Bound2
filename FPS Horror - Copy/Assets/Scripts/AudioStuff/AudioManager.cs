@@ -48,14 +48,6 @@ public class AudioManager : MonoBehaviour
 
         volumenDeseadoScreamer = sound["Screamer1SFX"].volume; //ojo, esto significa que los 2 screamers tendran el mismo volumen
 
-        if (finalUsb != null)
-        {
-            if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Nivel1bis"))
-            {
-                print("audiomanager: me suscribi");
-                finalUsb.OnFinalUSBPickup += TurnOnFinalAlarm; //suscribo el metodo PrenderAlarmas al evento
-            }
-        }
     }
 
     public void PlayByName(string clipName) //el mas groso. le das el string y te da play a ese audio. muy global y sencillo.

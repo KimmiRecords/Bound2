@@ -34,11 +34,11 @@ public class StatsManager : MonoBehaviour
         tengoCardKey = PlayerStats.instance.hasCardKey;
         jeringasRecolectadas = PlayerStats.instance.SpeedBoosts;
 
-        print("statsmanager: guarde los siguientes stats:");
-        print("usbs: " + usbsRecolectados);
-        print("linterna: " + tengoLinterna);
-        print("cardkey: " + tengoCardKey);
-        print("jeringas: " + jeringasRecolectadas);
+        //print("statsmanager: guarde los siguientes stats:");
+        //print("usbs: " + usbsRecolectados);
+        //print("linterna: " + tengoLinterna);
+        //print("cardkey: " + tengoCardKey);
+        //print("jeringas: " + jeringasRecolectadas);
     }
 
     public void LoadStats()
@@ -48,11 +48,11 @@ public class StatsManager : MonoBehaviour
         PlayerStats.instance.hasCardKey = tengoCardKey;
         PlayerStats.instance.SpeedBoosts = jeringasRecolectadas;
 
-        print("statsmanager: cargue los siguientes stats:");
-        print("usbs: " + PlayerStats.instance.UsbsCollected);
-        print("linterna: " + PlayerStats.instance.hasFlashlight);
-        print("cardkey: " + PlayerStats.instance.hasCardKey);
-        print("jeringas: " + PlayerStats.instance.SpeedBoosts);
+        //print("statsmanager: cargue los siguientes stats:");
+        //print("usbs: " + PlayerStats.instance.UsbsCollected);
+        //print("linterna: " + PlayerStats.instance.hasFlashlight);
+        //print("cardkey: " + PlayerStats.instance.hasCardKey);
+        //print("jeringas: " + PlayerStats.instance.SpeedBoosts);
 
         if (PlayerStats.instance.hasFlashlight)
         {
@@ -61,7 +61,7 @@ public class StatsManager : MonoBehaviour
 
         if (PlayerStats.instance.hasCardKey)
         {
-            print("granted access xq tenes la cardkey");
+            //print("granted access xq tenes la cardkey");
             PlayerStats.instance.GrantAccess(PlayerStats.instance.cardKeyAccesses);
         }
     }
