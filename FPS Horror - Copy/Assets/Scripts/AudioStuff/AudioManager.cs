@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class AudioManager : MonoBehaviour
 {
@@ -9,7 +11,7 @@ public class AudioManager : MonoBehaviour
 
     public static AudioManager instance;
 
-    public FinalUSB finalUsb;
+    //public FinalUSB finalUsb;
 
     AudioSource[] allSounds;
     public bool isRunning;
@@ -46,21 +48,7 @@ public class AudioManager : MonoBehaviour
 
         volumenDeseadoScreamer = sound["Screamer1SFX"].volume; //ojo, esto significa que los 2 screamers tendran el mismo volumen
 
-        if (finalUsb != null)
-        {
-            finalUsb.OnFinalUSBPickup += TurnOnFinalAlarm; //suscribo el metodo PrenderAlarmas al evento
-        }
     }
-
-    //void Update()
-    //{
-    //    if (Input.GetKeyDown(KeyCode.Escape))
-    //    {
-    //        Application.Quit();
-    //    }
-    //}
-
-    //ARRANCAN LOS METODOS
 
     public void PlayByName(string clipName) //el mas groso. le das el string y te da play a ese audio. muy global y sencillo.
     {
@@ -125,8 +113,8 @@ public class AudioManager : MonoBehaviour
     }
     public void TurnOnFinalAlarm()
     {
-        StopAlarmaNorway();
-        PlayAlarmaTriple();
+        StopByName("AlarmaNorway");
+        PlayByName("AlarmaTriple");
         PlayByName("SelfDestructionSequenceInitiated");
     }
 

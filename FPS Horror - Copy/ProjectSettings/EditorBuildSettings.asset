@@ -26,4 +26,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/FinalCutscene.unity
     guid: 26720c92f5bc1914fb413b07f7f4181d
+  - enabled: 1
+    path: Assets/Scenes/Nivel2.unity
+    guid: dc690863b117fbc4382c2f7463c16b70
+  - enabled: 1
+    path: Assets/Scenes/Nivel1bis.unity
+    guid: 1b60c9c74af80404bb570325ad5b5b97
   m_configObjects: {}

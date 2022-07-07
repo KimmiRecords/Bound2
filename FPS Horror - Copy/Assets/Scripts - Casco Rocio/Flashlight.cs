@@ -12,7 +12,7 @@ public class Flashlight : MonoBehaviour
     public GameObject flashlight;
     public  GameObject     flashlightPoint;
     public  GameObject     flashlightActivatingCollider;
-    public  FlashlightLife flashlightOff; //re cheto, llama al otro script
+    public  FlashlightLife flashlightOff;
 
 
     

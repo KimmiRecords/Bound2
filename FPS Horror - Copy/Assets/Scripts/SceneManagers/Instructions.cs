@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class Instructions : MonoBehaviour
 {
-    public Text controls;
+    //public Text controls;
     public Text objectiveWhite;
     public Text objectiveRed;
     public Text credits;
@@ -33,11 +33,11 @@ public class Instructions : MonoBehaviour
     {
         _timer = 0;
 
-        _controlsInitialColor = controls.color; //guardo el color inicial
+        //_controlsInitialColor = controls.color; //guardo el color inicial
         _objectiveRedInitialColor = objectiveRed.color;
         _creditsInitialColor = credits.color;
 
-        controls.color = Color.clear; //arrancan invisibles
+        //controls.color = Color.clear; //arrancan invisibles
         objectiveRed.color = Color.clear;
         objectiveWhite.color = Color.clear;
         credits.color = Color.clear;
@@ -55,12 +55,10 @@ public class Instructions : MonoBehaviour
         //MainCamera.position = Vector3.Lerp(MainCamera.position, Camera2.position, _cameraTimer);
         //MainCamera.rotation = Quaternion.Lerp(MainCamera.rotation, Camera2.rotation, _cameraTimer);
 
-
         //lerpeo la posicion de la maincamera, desde su posicion inicial hasta la de la camera2
         MainCamera.position = new Vector3(Mathf.Lerp(MainCamera.position.x, Camera2.position.x, _cameraTimer),
                                            Mathf.Lerp(MainCamera.position.y, Camera2.position.y, _cameraTimer),
                                            Mathf.Lerp(MainCamera.position.z, Camera2.position.z, _cameraTimer));
-
 
         //misma pero para la rotacion, sin embargo...
         //parece que funciona, pero hace que la camara se vuelva loca y gire como trompo.
@@ -76,8 +74,6 @@ public class Instructions : MonoBehaviour
             credits.color = new Color(1, 1, 1, Mathf.Lerp(0, 1, _timer));
         }
 
-        //print(timer);
-
         if (Input.anyKey && _instructionsSeen == false && _timer >= 0.5) //paso a mostrar las instrucciones
         {
             _instructionsSeen = true;
@@ -88,15 +84,10 @@ public class Instructions : MonoBehaviour
         {
             credits.color = Color.clear; //apaga los credits
 
-            //muestro los controles
-            controls.color = new Color(_controlsInitialColor.r, _controlsInitialColor.g, _controlsInitialColor.b, Mathf.Lerp(0, 1, _timer)); 
-
-            //y muestra las instrus
             objectiveRed.color = new Color(_objectiveRedInitialColor.r, _objectiveRedInitialColor.g, _objectiveRedInitialColor.b, Mathf.Lerp(0, 1, _timer-0.5f));
             objectiveWhite.color = new Color(1, 1, 1, Mathf.Lerp(0, 1, _timer-0.5f));
-            Invoke("ShowRedAccents", 3);
+            //Invoke("ShowRedAccents", 4);
 
-            //hago aparecer el usb group
             Invoke("ShowUSBGroup", 6);
 
         }
@@ -104,20 +95,17 @@ public class Instructions : MonoBehaviour
         //CAMBIO DE ESCENA
         if (Input.GetKeyDown(KeyCode.E) && _instructionsSeen == true)
         {
-            AudioManager.instance.StopMainMenuMusic();
+            ChangeScene("Nivel1");
+        }
 
-            Destroy(AudioManager.instance.gameObject);
-            //AudioManager.instance.PlayBGM();
-            SceneManager.LoadScene("Nivel1"); //1 es el primer nivel
+        if (Input.GetKeyDown(KeyCode.R) && _instructionsSeen == true)
+        {
+            ChangeScene("Nivel2");
         }
 
         if (Input.GetKeyDown(KeyCode.T) && _instructionsSeen == true)
         {
-            AudioManager.instance.StopMainMenuMusic();
-            Destroy(AudioManager.instance.gameObject);
-
-            //AudioManager.instance.PlayBGM();
-            SceneManager.LoadScene("EscenarioDePrueba"); //5 es la escena de prueba
+            ChangeScene("Nivel1bis");
         }
 
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -134,5 +122,12 @@ public class Instructions : MonoBehaviour
     void ShowRedAccents()
     {
         objectiveRedAccents.SetActive(true);
+    }
+
+    void ChangeScene(string sceneName)
+    {
+        AudioManager.instance.StopMainMenuMusic();
+        Destroy(AudioManager.instance.gameObject);
+        SceneManager.LoadScene(sceneName);
     }
 }

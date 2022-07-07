@@ -771,13 +771,15 @@ MonoBehaviour:
   miNavMeshAgent: {fileID: 3056254799562137198}
   detectPlayer: {fileID: 7243538930069096031}
   miAnimator: {fileID: 3056254800243475733}
-  runningSpeed: 12
-  timeUntilExplosionMin: 4
-  timeUntilExplosionMax: 8
   points:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  runningSpeed: 12
+  timeUntilExplosionMin: 2
+  timeUntilExplosionMax: 4
+  exp: {fileID: 0}
+  boomerModel: {fileID: 0}
   index: 0
 --- !u!65 &3056254799562137184
 BoxCollider:
