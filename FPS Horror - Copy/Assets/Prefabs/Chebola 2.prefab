@@ -6796,12 +6796,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageAura: 30
-  monsterDamage: 0.3
-  chebolaPrefab: {fileID: 7808848037089618967}
+  monsterDamage: 0.4
   desiredScreamer: 1
   _anim: {fileID: 0}
   _agent: {fileID: 0}
   finalSpeed: 0
+  thisLevelBgm: BackgroundMusic
 --- !u!1 &7994345373475715123
 GameObject:
   m_ObjectHideFlags: 0
