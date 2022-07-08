@@ -69,6 +69,6 @@ Material:
     - _SpeedDirNoiseMainTex: {r: 0, g: 0, b: 0, a: 0}
     - _SpeedDirSubAlphaMask: {r: 1, g: 0, b: 0, a: 0}
     - _Tint: {r: 3.901525, g: 3.901525, b: 3.901525, a: 1}
-    - _Tint_01: {r: 0.0009765625, g: 0.0009765625, b: 0.0009765625, a: 0}
-    - _Tint_02: {r: 0.4056604, g: 0.4056604, b: 0.4056604, a: 0}
+    - _Tint_01: {r: 0.0039062495, g: 0.0039062495, b: 0.0039062495, a: 0}
+    - _Tint_02: {r: 0.5, g: 0.5, b: 0.5, a: 0}
   m_BuildTextureStacks: []

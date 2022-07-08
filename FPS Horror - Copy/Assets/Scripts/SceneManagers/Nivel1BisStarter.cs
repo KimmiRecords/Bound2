@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class Nivel1BisStarter : MonoBehaviour
 {
-    public DoorController puertaQueQuedoAbierta;
-    public Light luzQueQuedoVerde;
+    public DoorController[] puertasQueQuedaronAbiertas;
+    public Light[] lucesQueQuedaronVerdes;
     public Color verde;
     public FinalUSB finalUsb;
 
 
     void Start()
     {
-        puertaQueQuedoAbierta.OpenDoor();
+
+
+        OpenTheDoors();
         TurnGreen();
 
         finalUsb.OnFinalUSBPickup += AudioManager.instance.TurnOnFinalAlarm; //suscribo el metodo PrenderAlarmas al evento
@@ -20,11 +22,17 @@ public class Nivel1BisStarter : MonoBehaviour
 
     public void TurnGreen()
     {
-        luzQueQuedoVerde.color = verde;
+        for (int i = 0; i < lucesQueQuedaronVerdes.Length; i++)
+        {
+            lucesQueQuedaronVerdes[i].color = verde;
+        }
+    }
 
-        //for (int i = 0; i < luces.Length; i++)
-        //{
-        //    luces[i].color = verde;
-        //}
+    public void OpenTheDoors()
+    {
+        for (int i = 0; i < puertasQueQuedaronAbiertas.Length; i++)
+        {
+            puertasQueQuedaronAbiertas[i].OpenDoor();
+        }
     }
 }
