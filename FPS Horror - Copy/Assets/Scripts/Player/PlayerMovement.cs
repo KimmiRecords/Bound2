@@ -73,6 +73,7 @@ public class PlayerMovement : MonoBehaviour, IRalentizable, IMicroGravity
         pAnims = new PlayerAnimations(_anim); //construyo scripts x composicion
 
         PlayerStats.instance.OnDeath += TPToCheckpoint; //ya enterate
+
     }
 
     void Update()
@@ -177,22 +178,18 @@ public class PlayerMovement : MonoBehaviour, IRalentizable, IMicroGravity
 
     public void EnterMicroGravity()
     {
-        //IsInsideMicroGravity = true;
         gravityValue = gravityValueOnMicroGravity;
         jumpHeight *= jumpHeightOnMicroGravityMultiplier;
-        //print("multiplique jumpheight x " + jumpHeightOnMicroGravityMultiplier);
         _speedModifier = speedModifierOnMicroGravity;
         AudioManager.instance.TriggerSound(AudioManager.instance.sound["MicroGravityOn"], 0.5f, 0, 1, true);
     }
 
     public void ExitMicroGravity()
     {
-        //IsInsideMicroGravity = false;
         gravityValue = initialGravityValue;
         jumpHeight *= (1 / jumpHeightOnMicroGravityMultiplier);
         _speedModifier = 1;
         AudioManager.instance.TriggerSound(AudioManager.instance.sound["MicroGravityOff"], 0.5f, 0, 1, true);
-
     }
 
     public void StartSpeedBoost()
@@ -203,6 +200,7 @@ public class PlayerMovement : MonoBehaviour, IRalentizable, IMicroGravity
             {
                 print("consumiste un speedboost.");
                 PlayerStats.instance.SpeedBoosts--;
+                CanvasManager.instance.jeringaActiveIcon.SetActive(true);
                 StartCoroutine("SpeedBoost", boostDuration);
             }
             else
@@ -231,7 +229,6 @@ public class PlayerMovement : MonoBehaviour, IRalentizable, IMicroGravity
             playerCamera.fieldOfView = Mathf.Lerp(_initialFOV, _initialFOV + 60, _timer);
             _speedModifier = Mathf.Lerp(1, boostSpeedMultiplier, _timer);
 
-            //print(_timer);
             yield return null;
         }
 
@@ -251,5 +248,7 @@ public class PlayerMovement : MonoBehaviour, IRalentizable, IMicroGravity
 
         jumpHeight *= (1 / boostJumpMultiplier);
         _boostOn = false;
+        CanvasManager.instance.jeringaActiveIcon.SetActive(false);
+
     }
 }

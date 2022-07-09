@@ -6,8 +6,12 @@ public class BoosterPickup : Collectables
 {
     public override void Interact()
     {
+        if (PlayerStats.instance.SpeedBoosts == 0)
+        {
+            CanvasManager.instance.TurnOnCanvas("CanvasJeringas");
+        }
+
         PlayerStats.instance.SpeedBoosts++;
-        print("agarraste un speedboost. tenes " + PlayerStats.instance.SpeedBoosts);
         base.Interact(); //el base es solo reproducir un sfx
     }
 }

@@ -12,6 +12,8 @@ public class MicroGravityManager : MonoBehaviour
     void Start()
     {
         mgGenerator.TurnOnGenerator += TurnOnMicroGravity;
+        mgGenerator.TurnOffGenerator += TurnOffMicroGravity;
+
 
         //todasLasLucesDelNivel = FindObjectsOfType<Light>();
     }
@@ -26,6 +28,20 @@ public class MicroGravityManager : MonoBehaviour
         //for (int i = 0; i < todasLasLucesDelNivel.Length; i++)
         //{
         //    todasLasLucesDelNivel[i].intensity *= 0.25f;
+        //}
+    }
+
+
+    public void TurnOffMicroGravity()
+    {
+        for (int i = 0; i < allMicroGravs.Length; i++)
+        {
+            allMicroGravs[i].gameObject.SetActive(false);
+        }
+
+        //for (int i = 0; i < todasLasLucesDelNivel.Length; i++)
+        //{
+        //    todasLasLucesDelNivel[i].intensity *= 4f;
         //}
     }
 }
