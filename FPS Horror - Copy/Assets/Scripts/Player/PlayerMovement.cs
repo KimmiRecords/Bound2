@@ -73,6 +73,7 @@ public class PlayerMovement : MonoBehaviour, IRalentizable, IMicroGravity
         pAnims = new PlayerAnimations(_anim); //construyo scripts x composicion
 
         PlayerStats.instance.OnDeath += TPToCheckpoint; //ya enterate
+
     }
 
     void Update()
@@ -177,22 +178,18 @@ public class PlayerMovement : MonoBehaviour, IRalentizable, IMicroGravity
 
     public void EnterMicroGravity()
     {
-        //IsInsideMicroGravity = true;
         gravityValue = gravityValueOnMicroGravity;
         jumpHeight *= jumpHeightOnMicroGravityMultiplier;
-        //print("multiplique jumpheight x " + jumpHeightOnMicroGravityMultiplier);
         _speedModifier = speedModifierOnMicroGravity;
         AudioManager.instance.TriggerSound(AudioManager.instance.sound["MicroGravityOn"], 0.5f, 0, 1, true);
     }
 
     public void ExitMicroGravity()
     {
-        //IsInsideMicroGravity = false;
         gravityValue = initialGravityValue;
         jumpHeight *= (1 / jumpHeightOnMicroGravityMultiplier);
         _speedModifier = 1;
         AudioManager.instance.TriggerSound(AudioManager.instance.sound["MicroGravityOff"], 0.5f, 0, 1, true);
-
     }
 
     public void StartSpeedBoost()

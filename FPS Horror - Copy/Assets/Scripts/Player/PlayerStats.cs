@@ -12,7 +12,6 @@ public class PlayerStats : MonoBehaviour, IGaseable, IGraviFloorDamageable
     //crea el evento OnDeath, al que otros objetos se van a suscribir
     //TP2 - Francisco Serra, Rocio Casco y Diego Katabian
 
-
     public static PlayerStats instance;
 
     public float playerHpMax;
@@ -25,21 +24,17 @@ public class PlayerStats : MonoBehaviour, IGaseable, IGraviFloorDamageable
     public delegate void MyDelegate(Vector3 cp);
     public event MyDelegate OnDeath;
 
+
     [HideInInspector]
     public Transform playerTransform;
-
     [HideInInspector]
     public bool playerFear = false;
-
     [HideInInspector]
     public bool hasFlashlight = false;
-
     [HideInInspector]
     public bool hasCardKey = false;
-
     [HideInInspector]
     public bool isPaused = false;
-
     [HideInInspector]
     public Vector3 lastCheckpoint;
 
@@ -75,7 +70,6 @@ public class PlayerStats : MonoBehaviour, IGaseable, IGraviFloorDamageable
             }
         }
     }
-
     public int SpeedBoosts
     {
         get
@@ -117,8 +111,6 @@ public class PlayerStats : MonoBehaviour, IGaseable, IGraviFloorDamageable
         {
             _hpRegen.CheckAndRegen(ref _playerHp);
         }
-
-        //print(_playerHp);
     }
 
     public void GetFlashlight()

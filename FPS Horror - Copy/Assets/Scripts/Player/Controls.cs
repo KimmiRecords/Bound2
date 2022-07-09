@@ -62,6 +62,7 @@ public class Controls
         if (Input.GetKeyDown(KeyCode.U))
         {
             PlayerStats.instance.UsbsCollected++;
+            CanvasManager.instance.TurnOnCanvas("CanvasUSB");
             Debug.Log("CHEAT: te sumaste un usb. Ahora tenes " + PlayerStats.instance.UsbsCollected);
         }
 
@@ -80,6 +81,8 @@ public class Controls
         if (Input.GetKeyDown(KeyCode.Numlock))
         {
             PlayerStats.instance.SpeedBoosts++;
+            CanvasManager.instance.TurnOnCanvas("CanvasJeringas");
+
             Debug.Log("CHEAT: conseguiste 1 speedboost");
         }
     }
