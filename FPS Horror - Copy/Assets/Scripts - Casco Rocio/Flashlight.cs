@@ -44,12 +44,14 @@ public class Flashlight : MonoBehaviour
                 flashlightPoint.SetActive(true);
                 flashlightActivatingCollider.SetActive(true);
                 AudioManager.instance.PlayLinternaOn();
+                CanvasManager.instance.linternaActiveIcon.SetActive(true);
             }
             else if (flashlightActive == false)
             {
                 flashlightPoint.SetActive(false);
                 flashlightActivatingCollider.SetActive(false);
                 AudioManager.instance.PlayLinternaOff();
+                CanvasManager.instance.linternaActiveIcon.SetActive(false);
             }
         }
 

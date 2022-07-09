@@ -53,7 +53,12 @@ public class Controls
             _playerMovement.StartSpeedBoost();
         }
 
-        
+        //if (Input.GetKeyDown(KeyCode.Q))
+        //{
+        //    Flashlight.FlashlightFunction();
+        //}
+
+
 
 
 

@@ -15,6 +15,9 @@ public class CanvasManager : MonoBehaviour
     public GameObject canvasJeringas;
     public GameObject canvasVidaUtil;
 
+    public GameObject linternaActiveIcon;
+    public GameObject jeringaActiveIcon;
+
     public Dictionary<string, GameObject> canvases = new Dictionary<string, GameObject>();
 
     void Start()

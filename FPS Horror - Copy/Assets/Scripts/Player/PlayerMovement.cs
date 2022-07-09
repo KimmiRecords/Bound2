@@ -200,6 +200,7 @@ public class PlayerMovement : MonoBehaviour, IRalentizable, IMicroGravity
             {
                 print("consumiste un speedboost.");
                 PlayerStats.instance.SpeedBoosts--;
+                CanvasManager.instance.jeringaActiveIcon.SetActive(true);
                 StartCoroutine("SpeedBoost", boostDuration);
             }
             else
@@ -228,7 +229,6 @@ public class PlayerMovement : MonoBehaviour, IRalentizable, IMicroGravity
             playerCamera.fieldOfView = Mathf.Lerp(_initialFOV, _initialFOV + 60, _timer);
             _speedModifier = Mathf.Lerp(1, boostSpeedMultiplier, _timer);
 
-            //print(_timer);
             yield return null;
         }
 
@@ -248,5 +248,7 @@ public class PlayerMovement : MonoBehaviour, IRalentizable, IMicroGravity
 
         jumpHeight *= (1 / boostJumpMultiplier);
         _boostOn = false;
+        CanvasManager.instance.jeringaActiveIcon.SetActive(false);
+
     }
 }
