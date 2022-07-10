@@ -359,12 +359,12 @@ GameObject:
   - component: {fileID: 8618608512150968181}
   - component: {fileID: 76740417527612448}
   m_Layer: 0
-  m_Name: UIBorde
+  m_Name: CanvasBorde
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7801570352627138268
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2976,10 +2976,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee5b6dc143885e64db805a6dba68b9f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvasUSB: {fileID: 3940972116189013159}
-  canvasBatteries: {fileID: 7927287122366606944}
-  canvasJeringas: {fileID: 1476236092812959090}
-  canvasVidaUtil: {fileID: 7532708431783394673}
+  canvasGameObjects:
+  - {fileID: 4390912077366134244}
+  - {fileID: 3940972116189013159}
+  - {fileID: 7532708431783394673}
+  - {fileID: 7927287122366606944}
+  - {fileID: 1476236092812959090}
   linternaActiveIcon: {fileID: 8208017707009828853}
   jeringaActiveIcon: {fileID: 8599391617293829702}
 --- !u!1 &6153822311285911910
