@@ -31,5 +31,7 @@ public class SceneStarter : MonoBehaviour
         {
             CanvasManager.instance.TurnOnCanvas("CanvasJeringas");
         }
+
+        StatsManager.instance.SaveStats();
     }
 }

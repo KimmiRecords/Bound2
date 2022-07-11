@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class StatsManager : MonoBehaviour
 {
@@ -13,6 +15,9 @@ public class StatsManager : MonoBehaviour
     bool tengoLinterna;
     bool tengoCardKey;
     int jeringasRecolectadas;
+
+    [HideInInspector]
+    public string ultimoNivelJugado;
 
     private void Start()
     {
@@ -34,6 +39,8 @@ public class StatsManager : MonoBehaviour
         tengoCardKey = PlayerStats.instance.hasCardKey;
         jeringasRecolectadas = PlayerStats.instance.SpeedBoosts;
 
+
+        ultimoNivelJugado = SceneManager.GetActiveScene().name;
         //print("statsmanager: guarde los siguientes stats:");
         //print("usbs: " + usbsRecolectados);
         //print("linterna: " + tengoLinterna);
