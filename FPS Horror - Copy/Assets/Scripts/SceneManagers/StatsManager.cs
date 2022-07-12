@@ -12,7 +12,6 @@ public class StatsManager : MonoBehaviour
     public static StatsManager instance;
 
     int usbsRecolectados;
-    bool tengoLinterna;
     bool tengoCardKey;
     int jeringasRecolectadas;
 
@@ -35,40 +34,21 @@ public class StatsManager : MonoBehaviour
     public void SaveStats()
     {
         usbsRecolectados = PlayerStats.instance.UsbsCollected;
-        tengoLinterna = PlayerStats.instance.hasFlashlight;
         tengoCardKey = PlayerStats.instance.hasCardKey;
         jeringasRecolectadas = PlayerStats.instance.SpeedBoosts;
 
 
         ultimoNivelJugado = SceneManager.GetActiveScene().name;
-        //print("statsmanager: guarde los siguientes stats:");
-        //print("usbs: " + usbsRecolectados);
-        //print("linterna: " + tengoLinterna);
-        //print("cardkey: " + tengoCardKey);
-        //print("jeringas: " + jeringasRecolectadas);
     }
 
     public void LoadStats()
     {
         PlayerStats.instance.UsbsCollected = usbsRecolectados;
-        PlayerStats.instance.hasFlashlight = tengoLinterna;
         PlayerStats.instance.hasCardKey = tengoCardKey;
         PlayerStats.instance.SpeedBoosts = jeringasRecolectadas;
 
-        //print("statsmanager: cargue los siguientes stats:");
-        //print("usbs: " + PlayerStats.instance.UsbsCollected);
-        //print("linterna: " + PlayerStats.instance.hasFlashlight);
-        //print("cardkey: " + PlayerStats.instance.hasCardKey);
-        //print("jeringas: " + PlayerStats.instance.SpeedBoosts);
-
-        if (PlayerStats.instance.hasFlashlight)
-        {
-            Invoke("ActivarModeloLinterna", 0.1f);
-        }
-
         if (PlayerStats.instance.hasCardKey)
         {
-            //print("granted access xq tenes la cardkey");
             PlayerStats.instance.GrantAccess(PlayerStats.instance.cardKeyAccesses);
         }
     }

@@ -9,6 +9,8 @@ public class SceneStarter : MonoBehaviour
 
     public string conQueTemaArranco;
 
+    public int necessaryUsbs;
+
     void Start()
     {
         StatsManager.instance.LoadStats();
@@ -16,11 +18,12 @@ public class SceneStarter : MonoBehaviour
         AudioManager.instance.StopAll();
         AudioManager.instance.PlayByName(conQueTemaArranco);
 
-
+        PlayerStats.instance.UsbsCollected = necessaryUsbs;
         if (PlayerStats.instance.UsbsCollected > 0)
         {
             CanvasManager.instance.TurnOnCanvas("CanvasUSB");
         }
+        print("agregue necesasary usbs");
 
         if (PlayerStats.instance.hasFlashlight == true)
         {

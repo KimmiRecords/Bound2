@@ -1975,7 +1975,7 @@ MonoBehaviour:
   m_Text: 'File 02. <Lab Assistant SERRA>
 
     Failure. Unbound subjects survived
-    but were unable to move.'
+    but were unable to move. Doctor Roman executed the rest of the subjects.'
 --- !u!1 &6153822311165013687
 GameObject:
   m_ObjectHideFlags: 0
@@ -2056,8 +2056,7 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: 'File 03. <Lab Director ROMAN>
 
-    Failure. Unbound subjects went crazy
-    and killed everyone, including themselves. I''m the only one alive now.'
+    Failure. Nothing bad happened.'
 --- !u!1 &6153822311170472153
 GameObject:
   m_ObjectHideFlags: 0

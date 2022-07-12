@@ -12,10 +12,9 @@ public class Nivel1BisStarter : MonoBehaviour
 
     void Start()
     {
-
-
         OpenTheDoors();
         TurnGreen();
+        //Invoke("AddNecessaryUsbs", 0.1f);
 
         finalUsb.OnFinalUSBPickup += AudioManager.instance.TurnOnFinalAlarm; //suscribo el metodo PrenderAlarmas al evento
     }
@@ -35,4 +34,10 @@ public class Nivel1BisStarter : MonoBehaviour
             puertasQueQuedaronAbiertas[i].OpenDoor();
         }
     }
+
+    //public void AddNecessaryUsbs()
+    //{
+    //    print("agregue usbs");
+    //    PlayerStats.instance.UsbsCollected = 3;
+    //}
 }
