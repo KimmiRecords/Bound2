@@ -30,7 +30,7 @@ public class PlayerStats : MonoBehaviour, IGaseable, IGraviFloorDamageable
     [HideInInspector]
     public bool playerFear = false;
     [HideInInspector]
-    public bool hasFlashlight = false;
+    public bool hasFlashlight = true;
     [HideInInspector]
     public bool hasCardKey = false;
     [HideInInspector]
