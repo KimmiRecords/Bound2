@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class SceneStarter : MonoBehaviour
 {
@@ -14,7 +16,11 @@ public class SceneStarter : MonoBehaviour
 
     void Start()
     {
-        StatsManager.instance.LoadStats();
+
+        if (StatsManager.instance.ultimoNivelJugado != SceneManager.GetActiveScene().name)
+        {
+            StatsManager.instance.LoadStats();
+        }
 
         AudioManager.instance.StopAll();
         AudioManager.instance.PlayByName(conQueTemaArranco);
@@ -25,10 +31,8 @@ public class SceneStarter : MonoBehaviour
         }
 
         PlayerStats.instance.UsbsCollected = necessaryUsbs;
-        if (PlayerStats.instance.UsbsCollected > 0)
-        {
-            CanvasManager.instance.TurnOnCanvas("CanvasUSB");
-        }
+        CanvasManager.instance.TurnOnCanvas("CanvasUSB");
+        
 
         if (PlayerStats.instance.hasFlashlight == true)
         {

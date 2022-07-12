@@ -11,10 +11,8 @@ public class USBPickup : Collectables
 
     public override void Interact()
     {
-        if (PlayerStats.instance.UsbsCollected == 0)
-        {
-            CanvasManager.instance.TurnOnCanvas("CanvasUSB");
-        }
+        CanvasManager.instance.TurnOnCanvas("CanvasUSB");
+
 
         usbManager.AddUsb(this.gameObject);
         PlayerStats.instance.UsbsCollected++;

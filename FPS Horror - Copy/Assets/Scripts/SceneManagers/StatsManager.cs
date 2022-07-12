@@ -29,6 +29,10 @@ public class StatsManager : MonoBehaviour
             instance = this;
         }
         DontDestroyOnLoad(this);
+
+
+        ultimoNivelJugado = SceneManager.GetActiveScene().name;
+        print(ultimoNivelJugado);
     }
 
     public void SaveStats()
