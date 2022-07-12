@@ -22,6 +22,8 @@ public class AudioManager : MonoBehaviour
     int _explosionCycleIndex = 0;
     int _tosCycleIndex = 0;
 
+    IEnumerator fadeOutScreamerCoroutine;
+
     public Dictionary<string, AudioSource> sound = new Dictionary<string, AudioSource>();
 
     void Awake()
@@ -279,20 +281,40 @@ public class AudioManager : MonoBehaviour
     }
     public void FadeOutScreamer(int screamerID, float fadetime)
     {
-        float timer = Time.time / fadetime;
+
+        fadeOutScreamerCoroutine = FadeOutScreamerCoroutine(screamerID, fadetime);
+
+        StartCoroutine(fadeOutScreamerCoroutine);
+    }
+
+    public IEnumerator FadeOutScreamerCoroutine(int screamerID, float fadetime)
+    {
+        float timer = 0;
+        string screamerName = "";
+        print("arranca el fadeoutscreamer");
 
         switch (screamerID)
         {
             case 1:
-                sound["Screamer1SFX"].volume = Mathf.Lerp(1, 0, timer);
+                screamerName = "Screamer1SFX";
                 break;
 
             case 2:
-                sound["Screamer2SFX"].volume = Mathf.Lerp(1, 0, timer);
+                screamerName = "Screamer2SFX";
                 break;
 
             default:
                 break;
+        }
+
+        while (sound[screamerName].volume > 0)
+        {
+            print("sigo bajando el volumen de " + screamerName);
+            timer += Time.time / fadetime;
+            print(timer);
+            sound[screamerName].volume = Mathf.Lerp(1, 0, timer);
+            print("volumen " + sound[screamerName].volume);
+            yield return null;
         }
     }
     public void StopScreamer(int screamerID)
