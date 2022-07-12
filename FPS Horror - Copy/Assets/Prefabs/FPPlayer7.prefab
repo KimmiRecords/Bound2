@@ -455,7 +455,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerBody: {fileID: 6718208575797854364}
   fpsCamera: {fileID: 6718208575435062047}
-  mouseSensitivity: 500
+  mouseSensitivity: 400
   pickUpDistance: 5
   sensedObj: {fileID: 0}
   manito: {fileID: 5415093821127891503}
@@ -628,6 +628,7 @@ MonoBehaviour:
   ModeloLinterna: {fileID: 5450147385531508260}
   cardKeyAccesses: []
   maxUsbs: 4
+  batteriesObtained: 0
   playerTransform: {fileID: 0}
   playerFear: 0
   hasFlashlight: 0

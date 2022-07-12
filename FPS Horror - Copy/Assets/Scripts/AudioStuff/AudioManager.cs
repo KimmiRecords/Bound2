@@ -116,6 +116,8 @@ public class AudioManager : MonoBehaviour
         StopByName("AlarmaNorway");
         PlayByName("AlarmaTriple");
         PlayByName("SelfDestructionSequenceInitiated");
+        PlayByName("StunnedSFX");
+
     }
 
 

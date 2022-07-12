@@ -748,6 +748,9 @@ MonoBehaviour:
   pickUpType: 1
   muestraManito: 1
   inventory: {fileID: 0}
+  batteryRecharge: 120
+  count: {fileID: 0}
+  wasteBattery: {fileID: 0}
 --- !u!114 &8011110996900340236
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -16,17 +16,21 @@ public class YouDiedScene : MonoBehaviour
     public float oscillationFrequency;
     public float transparencyOffset;
 
-    string ultimoLvl;
+    string ultimoLvl = "";
 
     void Start()
     {
         AudioManager.instance.StopAll();
         AudioManager.instance.PlayByName("Belveth");
+        AudioManager.instance.PlayByName("YouDiedSFX");
 
         youDied.color = new Color(1, 0, 0, 0);
         pressAnyKey.color = new Color(1, 0.5f, 0.5f, 0);
 
-        ultimoLvl = StatsManager.instance.ultimoNivelJugado;
+        if (ultimoLvl != "")
+        {
+            ultimoLvl = StatsManager.instance.ultimoNivelJugado;
+        }
     }
 
     void Update()
