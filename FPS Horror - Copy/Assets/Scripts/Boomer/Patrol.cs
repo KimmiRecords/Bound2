@@ -19,7 +19,7 @@ public class Patrol : MonoBehaviour, IRalentizable
     public float timeUntilExplosionMin;
     public float timeUntilExplosionMax;
 
-    public GameObject exp;
+    public GameObject explosionGameObject;
     public GameObject boomerModel;
 
     [HideInInspector]
@@ -87,7 +87,7 @@ public class Patrol : MonoBehaviour, IRalentizable
     {
         AudioManager.instance.StopZPainScream();
         AudioManager.instance.PlayZExplosion(transform.position);
-        GameObject _exp = Instantiate(exp, boomerModel.transform.position, boomerModel.transform.rotation);
+        GameObject _exp = Instantiate(explosionGameObject, boomerModel.transform.position, boomerModel.transform.rotation);
         Destroy(_exp, 3);
 
         if (detectPlayer.playerIsInRange)
