@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class Flashlight : MonoBehaviour
 {
-
     //LOGICA DE LA LINTERNA, POR MEI
     private bool           flashlightActive = false;
     public  Text           textTimer;
@@ -13,12 +12,8 @@ public class Flashlight : MonoBehaviour
     public  GameObject     flashlightPoint;
     public  GameObject     flashlightActivatingCollider;
     public  FlashlightLife flashlightOff;
-
-
     
     public bool activate = true;
-
-    
 
     void Start()
     {
@@ -38,7 +33,6 @@ public class Flashlight : MonoBehaviour
         {
             flashlightActive = !flashlightActive;
             
-
             if (flashlightActive == true)
             {
                 flashlightPoint.SetActive(true);

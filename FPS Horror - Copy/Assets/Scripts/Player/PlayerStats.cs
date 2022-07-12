@@ -99,11 +99,11 @@ public class PlayerStats : MonoBehaviour, IGaseable, IGraviFloorDamageable
         }
 
         _hpRegen = new HPRegen(hpRegen, playerHpMax);
-        hasFlashlight = false;
         playerTransform = transform;
         lastCheckpoint = Vector3.zero;
         _playerHp = playerHpMax;
         UsbsCollected = 0;
+        GetFlashlight();
     }
     void Update()
     {
@@ -115,12 +115,10 @@ public class PlayerStats : MonoBehaviour, IGaseable, IGraviFloorDamageable
 
     public void GetFlashlight()
     {
-        if (!hasFlashlight)
-        {
-            hasFlashlight = true;
-            CanvasVidaUtil.SetActive(true);
-            ModeloLinterna.SetActive(true);
-        }
+        hasFlashlight = true;
+        CanvasVidaUtil.SetActive(true);
+        ModeloLinterna.SetActive(true);
+
     }
     public void GetCardKey()
     {

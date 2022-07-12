@@ -55,7 +55,10 @@ public class CanvasManager : MonoBehaviour
             canvases["CanvasBorde"].SetActive(true);
         }
 
-        canvases[canvasName].SetActive(true);
+        if (canvases[canvasName] != null)
+        {
+            canvases[canvasName].SetActive(true);
+        }
         turnOnCanvasCount++;
     }
 }
