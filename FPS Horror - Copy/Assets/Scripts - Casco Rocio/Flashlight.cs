@@ -17,8 +17,8 @@ public class Flashlight : MonoBehaviour
 
     void Start()
     {
-        flashlight.SetActive(false);
-        flashlightPoint.SetActive(false);
+        //flashlight.SetActive(false);
+        //flashlightPoint.SetActive(false);
         flashlightActivatingCollider.SetActive(false);
     }
 
