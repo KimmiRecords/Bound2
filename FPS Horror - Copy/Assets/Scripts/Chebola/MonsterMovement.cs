@@ -11,7 +11,6 @@ public class MonsterMovement : MonoBehaviour, IRalentizable, IGaseable
 
     public float damageAura; //el radio del aura
     public float monsterDamage; // el daño que hace
-    //public GameObject chebolaPrefab;
     public int desiredScreamer; //si voy a pedir el screamer 1 o 2 o cual
     public Animator _anim;
     public NavMeshAgent _agent;
@@ -166,7 +165,8 @@ public class MonsterMovement : MonoBehaviour, IRalentizable, IGaseable
             print("anulo la suscripcion");
             PlayerStats.instance.OnDeath -= ResetChebola;
 
-            AudioManager.instance.FadeOutScreamer(desiredScreamer, 10);
+            AudioManager.instance.FadeOutScreamer(desiredScreamer, 4000);
+
             AudioManager.instance.PlayHeavyBreathing();
 
             AudioManager.instance.PlayByName(thisLevelBgm);

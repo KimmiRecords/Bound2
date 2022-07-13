@@ -48,7 +48,6 @@ public class Flashlight : MonoBehaviour
                 CanvasManager.instance.linternaActiveIcon.SetActive(false);
             }
         }
-
     }
 
 

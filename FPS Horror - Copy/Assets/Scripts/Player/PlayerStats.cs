@@ -20,6 +20,8 @@ public class PlayerStats : MonoBehaviour, IGaseable, IGraviFloorDamageable
     public GameObject ModeloLinterna;
     public CardKeyAccess[] cardKeyAccesses; //referencio a los paneles que necesitan llave para operar
     public int maxUsbs;
+    public int batteriesObtained = 0;
+    //public int currentBatteries = 1;
 
     public delegate void MyDelegate(Vector3 cp);
     public event MyDelegate OnDeath;
@@ -155,6 +157,8 @@ public class PlayerStats : MonoBehaviour, IGaseable, IGraviFloorDamageable
     }
     public void Die()
     {
+        //StatsManager.instance.ultimoNivelJugado = SceneManager.GetActiveScene().name;
+
         if (lastCheckpoint == Vector3.zero)
         {
             SceneManager.LoadScene("YouDiedScene");

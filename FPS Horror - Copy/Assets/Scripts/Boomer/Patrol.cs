@@ -22,6 +22,10 @@ public class Patrol : MonoBehaviour, IRalentizable
     public GameObject explosionGameObject;
     public GameObject boomerModel;
 
+    public AudioSource walk;
+    public AudioSource run;
+    public AudioSource scream;
+
     [HideInInspector]
     public int index;
 
@@ -39,7 +43,7 @@ public class Patrol : MonoBehaviour, IRalentizable
         miNavMeshAgent.destination = points[0].position;
         _yaViAlPlayer = false;
         _timeUntilExplosionPosta = Random.Range(timeUntilExplosionMin, timeUntilExplosionMax);
-        AudioManager.instance.PlayZIdle();
+        walk.Play();
         _speedModifier = 1;
     }
 
@@ -54,7 +58,6 @@ public class Patrol : MonoBehaviour, IRalentizable
             GoToPoint(points[index]);
         }
 
-
         if (miNavMeshAgent.remainingDistance < 1 && index == 2) //cuando llego al punto 2, me quedo quieto
         {
             miNavMeshAgent.speed = 0;
@@ -62,8 +65,12 @@ public class Patrol : MonoBehaviour, IRalentizable
 
         if (!_yaViAlPlayer && detectPlayer.playerIsInRange) //veo al player y corro hacia punto 2
         {
-            AudioManager.instance.StopZIdle();
-            AudioManager.instance.PlayZRun();
+            //AudioManager.instance.StopZIdle();
+            walk.Stop();
+
+            //AudioManager.instance.PlayZRun();
+            run.Play();
+
 
             _boomerAnims.StartRunning();
             miNavMeshAgent.speed = runningSpeed * _speedModifier;
@@ -76,8 +83,6 @@ public class Patrol : MonoBehaviour, IRalentizable
         }
     }
 
-   
-
     public void GoToPoint(Transform point)
     {
         miNavMeshAgent.destination = point.position;
@@ -85,8 +90,11 @@ public class Patrol : MonoBehaviour, IRalentizable
 
     public void Explode()
     {
-        AudioManager.instance.StopZPainScream();
+        //AudioManager.instance.StopZPainScream();
+        scream.Stop();
+
         AudioManager.instance.PlayZExplosion(transform.position);
+
         GameObject _exp = Instantiate(explosionGameObject, boomerModel.transform.position, boomerModel.transform.rotation);
         Destroy(_exp, 3);
 
@@ -101,8 +109,10 @@ public class Patrol : MonoBehaviour, IRalentizable
     public void Stop()
     {
         _boomerAnims.StartPain();
-        AudioManager.instance.StopZRun();
-        AudioManager.instance.PlayZPainScream();
+        //AudioManager.instance.StopZRun();
+        run.Stop();
+        //AudioManager.instance.PlayZPainScream();\
+        scream.Play();
         miNavMeshAgent.speed = 0;
     }
 

@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class SceneStarter : MonoBehaviour
 {
@@ -10,20 +12,27 @@ public class SceneStarter : MonoBehaviour
     public string conQueTemaArranco;
 
     public int necessaryUsbs;
+    public bool necessaryCardkey;
 
     void Start()
     {
-        StatsManager.instance.LoadStats();
+
+        if (StatsManager.instance.ultimoNivelJugado != SceneManager.GetActiveScene().name)
+        {
+            StatsManager.instance.LoadStats();
+        }
 
         AudioManager.instance.StopAll();
         AudioManager.instance.PlayByName(conQueTemaArranco);
 
-        PlayerStats.instance.UsbsCollected = necessaryUsbs;
-        if (PlayerStats.instance.UsbsCollected > 0)
+        if (necessaryCardkey)
         {
-            CanvasManager.instance.TurnOnCanvas("CanvasUSB");
+            PlayerStats.instance.GetCardKey();
         }
-        print("agregue necesasary usbs");
+
+        PlayerStats.instance.UsbsCollected = necessaryUsbs;
+        CanvasManager.instance.TurnOnCanvas("CanvasUSB");
+        
 
         if (PlayerStats.instance.hasFlashlight == true)
         {

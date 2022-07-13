@@ -562,6 +562,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 082ef133a7a6c1841952bf56db475692, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  delayTime: 0
   text: {fileID: 1252616468}
   startColor: {r: 0.58431375, g: 0, b: 0, a: 0}
   frequency: 2
@@ -1284,7 +1285,7 @@ Light:
   serializedVersion: 10
   m_Type: 2
   m_Shape: 0
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.9245283, g: 0.33556068, b: 0.19624424, a: 1}
   m_Intensity: 10
   m_Range: 25.25
   m_SpotAngle: 30

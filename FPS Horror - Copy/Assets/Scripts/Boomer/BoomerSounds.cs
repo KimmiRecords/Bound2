@@ -5,6 +5,9 @@ using UnityEngine;
 public class BoomerSounds
 {
     Patrol boomer;
+
+    
+
     public BoomerSounds(Patrol p)
     {
         boomer = p;
@@ -12,8 +15,8 @@ public class BoomerSounds
 
     public void UpdateSoundsPosition()
     {
-        AudioManager.instance.sound["ZombieIdleSFX"].transform.position = boomer.transform.position;
-        AudioManager.instance.sound["ZombieRun"].transform.position = boomer.transform.position;
-        AudioManager.instance.sound["ZombiePainScream"].transform.position = boomer.transform.position;
+        boomer.walk.transform.position = boomer.transform.position;
+        boomer.run.transform.position = boomer.transform.position;
+        boomer.scream.transform.position = boomer.transform.position;
     }
 }
