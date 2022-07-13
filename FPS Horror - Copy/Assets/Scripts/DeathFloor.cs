@@ -4,41 +4,23 @@ using UnityEngine;
 
 public class DeathFloor : MonoBehaviour
 {
-    //este script se lo pones a un trigger para que aplique slow a todo lo que lo atraviese
-    //bueno, en realidad a todo lo que suscriba con IRalentizable.
+    //este script se lo pones a un trigger para que insta mate a todo lo que lo atraviese
+    //bueno, en realidad a todo lo que suscriba con IDeathflooreable.
     //por diego katabian
 
-    //public float graviFloorDamage;
 
     private void OnTriggerEnter(Collider other)
     {
-        //if (other.GetComponent<IRalentizable>() != null)
-        //{
-        //    var ralentizable = other.GetComponent<IRalentizable>();
-        //    ralentizable.EnterSlow();
-        //}
-
-        if (other.gameObject.layer == 3)
+        if (other.GetComponent<IDeathflooreable>() != null)
         {
-            PlayerStats.instance.InstaDeath();
+            var matable = other.GetComponent<IDeathflooreable>();
+            matable.EnterDeathFloor();
         }
-    }
 
-    private void OnTriggerExit(Collider other)
-    {
-        //if (other.GetComponent<IRalentizable>() != null)
+        //if (other.gameObject.layer == 3)
         //{
-        //    var ralentizable = other.GetComponent<IRalentizable>();
-        //    ralentizable.ExitSlow();
+        //    PlayerStats.instance.InstaDeath();
         //}
     }
 
-    private void OnTriggerStay(Collider other)
-    {
-        //if (other.GetComponent<IGraviFloorDamageable>() != null)
-        //{
-            //var damageable = other.GetComponent<IGraviFloorDamageable>();
-            //damageable.TakeFloorDamage(graviFloorDamage * Time.deltaTime);
-        //}
-    }
 }

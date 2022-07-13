@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PlayerStats : MonoBehaviour, IGaseable, IGraviFloorDamageable
+public class PlayerStats : MonoBehaviour, IGaseable, IGraviFloorDamageable, IDeathflooreable
 {
     //todos los stats del personaje principal
     //incluye getter y setter para hp y usbs recolectados
@@ -157,8 +157,6 @@ public class PlayerStats : MonoBehaviour, IGaseable, IGraviFloorDamageable
     }
     public void Die()
     {
-        //StatsManager.instance.ultimoNivelJugado = SceneManager.GetActiveScene().name;
-
         if (lastCheckpoint == Vector3.zero)
         {
             SceneManager.LoadScene("YouDiedScene");
@@ -189,5 +187,10 @@ public class PlayerStats : MonoBehaviour, IGaseable, IGraviFloorDamageable
     public void TakeFloorDamage(float dmg)
     {
         TakeDamage(dmg);
+    }
+
+    public void EnterDeathFloor()
+    {
+        InstaDeath();
     }
 }
