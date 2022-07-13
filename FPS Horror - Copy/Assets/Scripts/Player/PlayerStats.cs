@@ -157,6 +157,8 @@ public class PlayerStats : MonoBehaviour, IGaseable, IGraviFloorDamageable
     }
     public void Die()
     {
+        //StatsManager.instance.ultimoNivelJugado = SceneManager.GetActiveScene().name;
+
         if (lastCheckpoint == Vector3.zero)
         {
             SceneManager.LoadScene("YouDiedScene");

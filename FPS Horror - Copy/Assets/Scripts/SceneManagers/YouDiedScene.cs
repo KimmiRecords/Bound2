@@ -27,10 +27,12 @@ public class YouDiedScene : MonoBehaviour
         youDied.color = new Color(1, 0, 0, 0);
         pressAnyKey.color = new Color(1, 0.5f, 0.5f, 0);
 
-        if (ultimoLvl != "")
+        if (StatsManager.instance.ultimoNivelJugado != null)
         {
             ultimoLvl = StatsManager.instance.ultimoNivelJugado;
         }
+
+        print(ultimoLvl);
     }
 
     void Update()
@@ -62,6 +64,7 @@ public class YouDiedScene : MonoBehaviour
             {
                 ultimoLvl = "Nivel1";
             }
+
             SceneManager.LoadScene(ultimoLvl); //volves al nivel
         }
 
