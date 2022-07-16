@@ -12,6 +12,7 @@ public class MapPickedUp : Interactable
     public override void Interact()
     {
         _inventory.GetComponent<Inventory>().InventoryOpen();
+        print("mappickedup: inventoryopen");
         
         if (gameObject != null)
         {

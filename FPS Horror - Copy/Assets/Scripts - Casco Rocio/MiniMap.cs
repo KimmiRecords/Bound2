@@ -25,8 +25,6 @@ public class MiniMap : MonoBehaviour
 
     public void MapActived()
     {
-
-        
         if (obtained.obtainedMap == 2)
         {
             map1 = !map1;
@@ -39,8 +37,5 @@ public class MiniMap : MonoBehaviour
                 map.SetActive(false);
             }
         }
-
-        
-        
     }
 }

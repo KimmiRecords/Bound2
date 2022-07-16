@@ -18,6 +18,8 @@ public class RaycastBatteries : MonoBehaviour
     void Update()
     {
         _inventory.GetComponent<Inventory>().InventoryOpen();
+        print("raycast batteries: inventoryopen");
+
 
         RaycastHit hit;
         if (Physics.Raycast(transform.position, transform.forward, out hit, 20f))

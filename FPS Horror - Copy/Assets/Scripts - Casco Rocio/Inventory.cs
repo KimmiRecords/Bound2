@@ -15,13 +15,6 @@ public class Inventory : MonoBehaviour
 
     void Start()
     {
-        //_allSlots = slotHalder.transform.childCount;
-        //_slot = new GameObject[_allSlots];
-
-        //for (int i = 0; i < _allSlots; i++)
-        //{
-        //    _slot[i] = slotHalder.transform.GetChild(i).gameObject;
-        //}
         Count();
     }
 
@@ -46,7 +39,6 @@ public class Inventory : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.I))
         {
             inventoryEnabled = !inventoryEnabled;
-
 
             if (inventoryEnabled)
             {
