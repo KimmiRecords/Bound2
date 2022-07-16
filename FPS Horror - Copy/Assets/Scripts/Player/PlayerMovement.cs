@@ -15,6 +15,7 @@ public class PlayerMovement : MonoBehaviour, IRalentizable, IMicroGravity
     public float runningSpeed;
     public float jumpHeight;
     public float jumpHeightOnMicroGravityMultiplier;
+    public float jumpHeightOnSlowMultiplier;
     public float gravityValue;          //gravedad extra para que quede linda la caida del salto
     public float gravityValueOnMicroGravity;
     public float speedModifierOnMicroGravity;
@@ -29,7 +30,6 @@ public class PlayerMovement : MonoBehaviour, IRalentizable, IMicroGravity
     bool _boostOn;
     Vector3 _move;
 
-    float initialJumpHeight;
     float initialGravityValue;
 
     public CharacterController controller;
@@ -39,19 +39,6 @@ public class PlayerMovement : MonoBehaviour, IRalentizable, IMicroGravity
     public float cameraFOVChangeDuration;
 
     Animator _anim;
-
-    //bool _isInsideMicroGrav;
-    //public bool IsInsideMicroGravity
-    //{
-    //    get
-    //    {
-    //        return _isInsideMicroGrav;
-    //    }
-    //    set
-    //    {
-    //        _isInsideMicroGrav = value;
-    //    }
-    //}
 
     void Start()
     {
@@ -67,7 +54,6 @@ public class PlayerMovement : MonoBehaviour, IRalentizable, IMicroGravity
 
         playerSpeed = walkingSpeed;
         _speedModifier = 1;
-        initialJumpHeight = jumpHeight;
         initialGravityValue = gravityValue;
         controls = new Controls(this);
         pAnims = new PlayerAnimations(_anim); //construyo scripts x composicion
@@ -164,6 +150,7 @@ public class PlayerMovement : MonoBehaviour, IRalentizable, IMicroGravity
         if (!_boostOn)
         {
             _speedModifier = 0.5f;
+            jumpHeight *= jumpHeightOnSlowMultiplier;
         }
         AudioManager.instance.TriggerSound(AudioManager.instance.sound["GeigerCounter"], 2, 0, 1, true);
     }
@@ -172,6 +159,7 @@ public class PlayerMovement : MonoBehaviour, IRalentizable, IMicroGravity
         if (!_boostOn)
         {
             _speedModifier = 1;
+            jumpHeight *= (1 / jumpHeightOnSlowMultiplier);
         }
         AudioManager.instance.TriggerSound(AudioManager.instance.sound["GeigerCounter"], 2, 0, 1, false);
     }
