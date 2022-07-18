@@ -36,20 +36,13 @@ public class ScenePreLoader : MonoBehaviour
     IEnumerator AsyncLoader()
     {
         arranco = true;
-        yield return new WaitForSeconds(0.25f);
+        yield return new WaitForSeconds(0.02f);
 
         asyncLoad = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Single);
         print("arranque el loadSceneAsync de " + sceneName);
         asyncLoad.allowSceneActivation = false;
 
-        yield return new WaitForSeconds(0.25f);
+        yield return new WaitForSeconds(0.02f);
     }
 
-    private void Update()
-    {
-        if (asyncLoad != null)
-        {
-            print(asyncLoad.progress);
-        }
-    }
 }
