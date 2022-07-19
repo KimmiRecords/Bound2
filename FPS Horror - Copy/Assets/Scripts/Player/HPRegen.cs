@@ -21,6 +21,7 @@ public class HPRegen
         if (hp < _playerHpMax) //regenera hp de a poco
         {
             hp += _hpRegen * Time.deltaTime;
+            Debug.Log("HPREGEN: regenero");
 
             if (hp > _playerHpMax) //maxea la vida por si me paso
             {

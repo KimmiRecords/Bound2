@@ -112,8 +112,12 @@ public class PlayerStats : MonoBehaviour, IGaseable, IGraviFloorDamageable, IDea
     {
         if (!playerFear)
         {
+            Debug.Log("PLAYERSTATS: disparo CheckandRegen");
+
             _hpRegen.CheckAndRegen(ref _playerHp);
         }
+
+        print(PlayerHp);
     }
 
     public void GetFlashlight()
@@ -162,7 +166,6 @@ public class PlayerStats : MonoBehaviour, IGaseable, IGraviFloorDamageable, IDea
     public void Die()
     {
         PlayerHp = 0;
-        PlayerStats.instance.playerFear = false;
 
         if (lastCheckpoint == Vector3.zero)
         {
@@ -173,6 +176,9 @@ public class PlayerStats : MonoBehaviour, IGaseable, IGraviFloorDamageable, IDea
             PlayerHp = playerHpMax;
             OnDeath(lastCheckpoint);
         }
+
+        playerFear = false;
+        print("DIE: fear es false");
     }
     public void Win()
     {

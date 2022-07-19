@@ -55,6 +55,8 @@ public class MonsterMovement : MonoBehaviour, IRalentizable, IGaseable
         _playerTransform = PlayerStats.instance.playerTransform;
         _mustStay = true;
         PlayerStats.instance.playerFear = false;
+        print("MONSTERMOVEMENT START: fear es false");
+
         _chebolaAnims = new ChebolaAnimations(this);
         _habilitado = true;
     }
@@ -132,6 +134,10 @@ public class MonsterMovement : MonoBehaviour, IRalentizable, IGaseable
                     {
                         IJustSawThePlayer();
                         _screamerReady = false; //flags para que solo pase una vez
+                        PlayerStats.instance.playerFear = true;
+                        print("MonsterMovement: fear es true");
+
+
                     }
                     _enEscena = true;
                     _mustStay = false; //ya esta liberado para irse en cuanto el player se aleje lo suficiente
@@ -151,7 +157,7 @@ public class MonsterMovement : MonoBehaviour, IRalentizable, IGaseable
     public void Damage()
     {
         PlayerStats.instance.TakeDamage(monsterDamage); //daña al player constantemente
-        PlayerStats.instance.playerFear = true;
+
     }
     public void ResetChebola(Vector3 cp)
     {
@@ -170,6 +176,8 @@ public class MonsterMovement : MonoBehaviour, IRalentizable, IGaseable
         _anim.SetBool("isWalking", false);
         _screamerReady = true; //los violines
         _chebolaAnims.screamIsReady = true; //el aullido del chebola
+        PlayerStats.instance.playerFear = false;
+
     }
     public void Habilitar()
     {

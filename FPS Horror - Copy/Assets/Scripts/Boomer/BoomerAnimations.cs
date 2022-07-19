@@ -9,15 +9,21 @@ public class BoomerAnimations
     {
         anim = a;
     }
+
+    public void StartWalking()
+    {
+        Debug.Log("dispare startwalking");
+        anim.SetBool("isRunning", false);
+        anim.SetBool("isPain", false);
+    }
+
     public void StartRunning()
     {
-        //Debug.Log("dispare startrunning");
         anim.SetBool("isRunning", true);
     }
 
     public void StartPain()
     {
-        //Debug.Log("dispare startpain");
         anim.SetBool("isRunning", false);
         anim.SetBool("isPain", true);
     }

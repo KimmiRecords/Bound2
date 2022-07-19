@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ChebolaManager : MonoBehaviour
+public class MonsterManager : MonoBehaviour
 {
-    public static ChebolaManager instance;
+    public static MonsterManager instance;
 
-    void Start()
+    public void Start()
     {
         if (instance)
         {
