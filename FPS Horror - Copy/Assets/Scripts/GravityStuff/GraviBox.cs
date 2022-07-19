@@ -12,10 +12,10 @@ public class GraviBox : MonoBehaviour, IRalentizable
     [Tooltip("La gravedad normal y alterada para esta caja.")]
     public GraviStruct graviStruct;
 
-    Vector3 _appliedGrav;
-    Rigidbody _rb;
-    bool _isBound;
-    float _speedModifier;
+    protected Vector3 _appliedGrav;
+    protected Rigidbody _rb;
+    protected bool _isBound;
+    protected float _speedModifier;
 
     void Start()
     {

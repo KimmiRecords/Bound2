@@ -112,12 +112,12 @@ public class PlayerStats : MonoBehaviour, IGaseable, IGraviFloorDamageable, IDea
     {
         if (!playerFear)
         {
-            Debug.Log("PLAYERSTATS: disparo CheckandRegen");
+            //Debug.Log("PLAYERSTATS: disparo CheckandRegen");
 
             _hpRegen.CheckAndRegen(ref _playerHp);
         }
 
-        print(PlayerHp);
+        //print(PlayerHp);
     }
 
     public void GetFlashlight()

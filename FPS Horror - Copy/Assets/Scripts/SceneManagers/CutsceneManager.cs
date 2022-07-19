@@ -63,6 +63,10 @@ public class CutsceneManager : MonoBehaviour
             AudioManager.instance.StopByName("SelfDestructionSequenceInitiated");
         }
 
+
+        AudioManager.instance.StopByName("BackgroundMusic");
+        AudioManager.instance.StopByName("PassacagliaLoop");
+
         AudioManager.instance.PlayAtMoment(darkCircles, darkCirclesStartingTime);
 
         _texts = creditsCanvas.gameObject.GetComponentsInChildren<Text>();

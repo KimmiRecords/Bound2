@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour, IRalentizable, IMicroGravity
+public class PlayerMovement : MonoBehaviour, IRalentizable, IMicroGravity, ITransportable
 {
     //el movimiento del player. con character controller y a mano
     //llama por composicion a playeranimations y controls
@@ -117,6 +117,7 @@ public class PlayerMovement : MonoBehaviour, IRalentizable, IMicroGravity
         _move *= playerSpeed * _speedModifier;
         _move.y = _verticalVelocity; //sigo cargando el vector movieminto
         controller.Move(_move * Time.deltaTime); //aplico el vector movieminto al character controller, con el metodo .Move
+        //print("UPDATE: estoy moviendo al player " + _move);
 
         if (agency)
         {
@@ -238,5 +239,22 @@ public class PlayerMovement : MonoBehaviour, IRalentizable, IMicroGravity
         _boostOn = false;
         CanvasManager.instance.jeringaActiveIcon.SetActive(false);
 
+    }
+
+    public void Transport(Vector3 v)
+    {
+        //print("PLAYERMOVEMENT: dispare transport " + v);
+        //_move += v;
+        controller.Move(v * Time.deltaTime * 0.5f);
+    }
+
+    public void EnterPlatform()
+    {
+        //entre a la platform
+    }
+
+    public void ExitPlatform()
+    {
+        //sali de la platform
     }
 }
