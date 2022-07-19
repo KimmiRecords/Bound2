@@ -24,6 +24,9 @@ public class AudioManager : MonoBehaviour
 
     IEnumerator fadeOutScreamerCoroutine;
 
+    public string thisLevelBgm;
+
+    [HideInInspector]
     public Dictionary<string, AudioSource> sound = new Dictionary<string, AudioSource>();
 
     void Awake()
@@ -69,21 +72,23 @@ public class AudioManager : MonoBehaviour
     //BACKGROUNDMUSIC
     public void PlayBGM()
     {
-        sound["BackgroundMusic"].Play();
+        print("reproduje el sonido " + thisLevelBgm);
+        sound[thisLevelBgm].Play();
+
     }
     public void StopBGM()
     {
-        sound["BackgroundMusic"].Stop();
+        sound[thisLevelBgm].Stop();
     }
     public void FadeInBGM(float fadetime)
     {
         float timer = Time.time / fadetime;
-        sound["BackgroundMusic"].volume = Mathf.Lerp(0, 1, timer);
+        sound[thisLevelBgm].volume = Mathf.Lerp(0, 1, timer);
     }
     public void FadeOutBGM(float fadetime)
     {
         float timer = Time.time / fadetime;
-        sound["BackgroundMusic"].volume = Mathf.Lerp(1, 0, timer);
+        sound[thisLevelBgm].volume = Mathf.Lerp(1, 0, timer);
     }
 
     //MAIN MENU MUSIC
@@ -291,7 +296,6 @@ public class AudioManager : MonoBehaviour
     {
         float timer = 0;
         string screamerName = "";
-        print("arranca el fadeoutscreamer");
 
         switch (screamerID)
         {
@@ -309,11 +313,8 @@ public class AudioManager : MonoBehaviour
 
         while (sound[screamerName].volume > 0)
         {
-            print("sigo bajando el volumen de " + screamerName);
             timer += Time.time / fadetime;
-            print(timer);
             sound[screamerName].volume = Mathf.Lerp(1, 0, timer);
-            print("volumen " + sound[screamerName].volume);
             yield return null;
         }
     }

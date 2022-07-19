@@ -151,13 +151,19 @@ public class PlayerStats : MonoBehaviour, IGaseable, IGraviFloorDamageable, IDea
             Die();
         }
     }
+
     public void InstaDeath()
     {
         PlayerHp = 0;
         Die();
     }
+
+
     public void Die()
     {
+        PlayerHp = 0;
+        PlayerStats.instance.playerFear = false;
+
         if (lastCheckpoint == Vector3.zero)
         {
             SceneManager.LoadScene("YouDiedScene");
@@ -174,22 +180,18 @@ public class PlayerStats : MonoBehaviour, IGaseable, IGraviFloorDamageable, IDea
         _usbsCollected = 0;
         SceneManager.LoadScene("YouWinScene");
     }
-
     public void Gas(float dmg)
     {
         TakeDamage(dmg);
     }
-
     public void EnterGas()
     {
         AudioManager.instance.PlayTos();
     }
-
     public void TakeFloorDamage(float dmg)
     {
         TakeDamage(dmg);
     }
-
     public void EnterDeathFloor()
     {
         InstaDeath();
