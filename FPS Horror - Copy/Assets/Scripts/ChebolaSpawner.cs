@@ -27,7 +27,7 @@ public class ChebolaSpawner : MonoBehaviour
         _mm = chebolaPrefab.GetComponent<MonsterMovement>();
         _mm.desiredScreamer = screamerID; //le cargo el screamer que pedi
         _mm.damageAura = desiredAura;
-        _mm.thisLevelBgm = thisLevelMusic;
+        //_mm.thisLevelBgm = thisLevelMusic;
     }
 
     void OnDrawGizmosSelected()

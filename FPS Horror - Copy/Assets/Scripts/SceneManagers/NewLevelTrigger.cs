@@ -9,13 +9,24 @@ public class NewLevelTrigger : MonoBehaviour
     //por diego katabian
 
     public string nextLevel;
+    public ScenePreLoader spl;
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.layer == 3) //player
         {
             StatsManager.instance.SaveStats();
-            SceneManager.LoadScene(nextLevel);
+
+            if (spl != null)
+            {
+                print("habilite el sceneactivation del scenepreloader");
+                spl.asyncLoad.allowSceneActivation = true;
+            }
+            else
+            {
+                print("cargue la nueva escena de 0");
+                SceneManager.LoadScene(nextLevel);
+            }
         }
     }
 }

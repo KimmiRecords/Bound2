@@ -12,26 +12,29 @@ public class MonsterMovement : MonoBehaviour, IRalentizable, IGaseable
     public float damageAura; //el radio del aura
     public float monsterDamage; // el daño que hace
     public int desiredScreamer; //si voy a pedir el screamer 1 o 2 o cual
+
+    [HideInInspector]
     public Animator _anim;
+    [HideInInspector]
     public NavMeshAgent _agent;
 
     Transform _playerTransform;
+    Vector3 _initialPosition;
     Vector3 _playerPosition;
     Vector3 _vectorToPlayer;
     float _distanceToPlayer;
     float _angle; //angulo entre el player y el chebola
     float _initialSpeed;
     bool _screamerReady = true; //si el screamer ta ready para salir
-    bool _bgmReady = false; //si la musiquita ...
     bool _enEscena = false; //si esta el chebola en vista o no
     bool _mustStay = true; //si el chebola debe quedarse en su lugar. lo uso por si te tiene que esperar aunque no lo veas.
-    bool habilitado;
+    bool _habilitado;
     protected ChebolaAnimations _chebolaAnims;
 
     [HideInInspector]
     public float finalSpeed;
 
-    public string thisLevelBgm;
+    //public string thisLevelBgm;
 
     void Start()
     {
@@ -45,13 +48,17 @@ public class MonsterMovement : MonoBehaviour, IRalentizable, IGaseable
             _anim = GetComponent<Animator>();
         }
 
+        _initialPosition = transform.position;
+
         finalSpeed = _agent.speed;
         _initialSpeed = _agent.speed;
         _playerTransform = PlayerStats.instance.playerTransform;
         _mustStay = true;
         PlayerStats.instance.playerFear = false;
+        print("MONSTERMOVEMENT START: fear es false");
+
         _chebolaAnims = new ChebolaAnimations(this);
-        habilitado = true;
+        _habilitado = true;
     }
 
     void Update()
@@ -73,7 +80,7 @@ public class MonsterMovement : MonoBehaviour, IRalentizable, IGaseable
 
         //EL CHEBOLA TE PERSIGUE Y DAÑA
 
-        if (habilitado)
+        if (_habilitado)
         {
             SeekAndDestroy();
         }
@@ -88,7 +95,8 @@ public class MonsterMovement : MonoBehaviour, IRalentizable, IGaseable
         if (_enEscena == false && _mustStay == false) //cuando dejo de mirarlo se destruye
         {
             CalmDown();
-            Destroy(this.gameObject);
+            PlayerStats.instance.OnDeath -= ResetChebola;
+            this.gameObject.SetActive(false);
         }
     }
 
@@ -96,7 +104,6 @@ public class MonsterMovement : MonoBehaviour, IRalentizable, IGaseable
     {
         if (collision.gameObject.layer == 3) //layer 3 es Player
         {
-            print("chebola: Me tocó el chebola y me mató");
             PlayerStats.instance.InstaDeath(); //me mata de una si me toca
         }
     }
@@ -123,60 +130,58 @@ public class MonsterMovement : MonoBehaviour, IRalentizable, IGaseable
             {
                 if (hit.transform.gameObject.layer == 3 && _angle > 135) //y ese algo es layer 3 (player) //CHEBOLA ACTIVATE
                 {
+                    if (_screamerReady) //ONEHIT
+                    {
+                        IJustSawThePlayer();
+                        _screamerReady = false; //flags para que solo pase una vez
+                        PlayerStats.instance.playerFear = true;
+                        print("MonsterMovement: fear es true");
+
+
+                    }
                     _enEscena = true;
                     _mustStay = false; //ya esta liberado para irse en cuanto el player se aleje lo suficiente
                     _anim.SetBool("isWalking", true);
+
                     Damage(); //daño constantemente al player mientras me mire
-
-                    if (_screamerReady) //ONEHIT
-                    {
-                        //print("este chebola se suscribio al ondeath");
-                        PlayerStats.instance.OnDeath += ResetChebola; //ya enterate
-
-                        AudioManager.instance.PlayScreamer(desiredScreamer);
-                        AudioManager.instance.StopByName(thisLevelBgm);
-                        _screamerReady = false; //flags para que solo pase una vez
-                        _bgmReady = true;
-                    }
                 }
             }
         }
     }
+    void IJustSawThePlayer()
+    {
+        PlayerStats.instance.OnDeath += ResetChebola; //ya enterate
+        AudioManager.instance.StopBGM();
+        AudioManager.instance.PlayScreamer(desiredScreamer);
+    }
     public void Damage()
     {
         PlayerStats.instance.TakeDamage(monsterDamage); //daña al player constantemente
-        PlayerStats.instance.playerFear = true;
+
     }
     public void ResetChebola(Vector3 cp)
     {
         CalmDown();
-        Destroy(this.gameObject);
+        TPToPosition(_initialPosition);
     }
+
     public void CalmDown()
     {
-        print("chebola: el chebola se calmó");
+        AudioManager.instance.PlayHollowRoar(transform.position, 0.1f, 1.1f);
+        AudioManager.instance.FadeOutScreamer(desiredScreamer, 4000);
+        AudioManager.instance.PlayHeavyBreathing();
+        AudioManager.instance.PlayBGM();
 
         _agent.destination = transform.position; //o sea, a ningun lado
         _anim.SetBool("isWalking", false);
         _screamerReady = true; //los violines
         _chebolaAnims.screamIsReady = true; //el aullido del chebola
-        if (_bgmReady)
-        {
-            print("anulo la suscripcion");
-            PlayerStats.instance.OnDeath -= ResetChebola;
+        PlayerStats.instance.playerFear = false;
 
-            AudioManager.instance.FadeOutScreamer(desiredScreamer, 4000);
-
-            AudioManager.instance.PlayHeavyBreathing();
-
-            AudioManager.instance.PlayByName(thisLevelBgm);
-            PlayerStats.instance.playerFear = false;
-            _bgmReady = false;
-        }
     }
     public void Habilitar()
     {
-        habilitado = true;
+        _habilitado = true;
     }
     public void EnterSlow()
     {

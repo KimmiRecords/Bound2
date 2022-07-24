@@ -11205,6 +11205,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: AudioManager
       objectReference: {fileID: 0}
+    - target: {fileID: 8333307007883497885, guid: f569a4aeb7fcb31488d0caf8a039b67f,
+        type: 3}
+      propertyPath: thisLevelBgm
+      value: HollowRoarSFX
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f569a4aeb7fcb31488d0caf8a039b67f, type: 3}
 --- !u!1001 &680619912
@@ -18083,7 +18088,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: ecd4f69a482075a40a66b2ab41152ff2, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 1
   Mute: 0

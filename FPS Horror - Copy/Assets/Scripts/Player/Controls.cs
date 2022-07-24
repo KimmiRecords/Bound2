@@ -53,6 +53,11 @@ public class Controls
             _playerMovement.StartSpeedBoost();
         }
 
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            _playerMovement.playerCamera.GetComponent<Inventory>().InventoryOpen();
+        }
+
         //if (Input.GetKeyDown(KeyCode.Q))
         //{
         //    Flashlight.FlashlightFunction();

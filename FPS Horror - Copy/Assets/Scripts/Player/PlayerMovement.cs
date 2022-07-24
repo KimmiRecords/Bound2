@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour, IRalentizable, IMicroGravity
+public class PlayerMovement : MonoBehaviour, IRalentizable, IMicroGravity, ITransportable
 {
     //el movimiento del player. con character controller y a mano
     //llama por composicion a playeranimations y controls
@@ -15,6 +15,7 @@ public class PlayerMovement : MonoBehaviour, IRalentizable, IMicroGravity
     public float runningSpeed;
     public float jumpHeight;
     public float jumpHeightOnMicroGravityMultiplier;
+    public float jumpHeightOnSlowMultiplier;
     public float gravityValue;          //gravedad extra para que quede linda la caida del salto
     public float gravityValueOnMicroGravity;
     public float speedModifierOnMicroGravity;
@@ -29,7 +30,6 @@ public class PlayerMovement : MonoBehaviour, IRalentizable, IMicroGravity
     bool _boostOn;
     Vector3 _move;
 
-    float initialJumpHeight;
     float initialGravityValue;
 
     public CharacterController controller;
@@ -39,19 +39,6 @@ public class PlayerMovement : MonoBehaviour, IRalentizable, IMicroGravity
     public float cameraFOVChangeDuration;
 
     Animator _anim;
-
-    //bool _isInsideMicroGrav;
-    //public bool IsInsideMicroGravity
-    //{
-    //    get
-    //    {
-    //        return _isInsideMicroGrav;
-    //    }
-    //    set
-    //    {
-    //        _isInsideMicroGrav = value;
-    //    }
-    //}
 
     void Start()
     {
@@ -67,7 +54,6 @@ public class PlayerMovement : MonoBehaviour, IRalentizable, IMicroGravity
 
         playerSpeed = walkingSpeed;
         _speedModifier = 1;
-        initialJumpHeight = jumpHeight;
         initialGravityValue = gravityValue;
         controls = new Controls(this);
         pAnims = new PlayerAnimations(_anim); //construyo scripts x composicion
@@ -131,6 +117,7 @@ public class PlayerMovement : MonoBehaviour, IRalentizable, IMicroGravity
         _move *= playerSpeed * _speedModifier;
         _move.y = _verticalVelocity; //sigo cargando el vector movieminto
         controller.Move(_move * Time.deltaTime); //aplico el vector movieminto al character controller, con el metodo .Move
+        //print("UPDATE: estoy moviendo al player " + _move);
 
         if (agency)
         {
@@ -164,6 +151,7 @@ public class PlayerMovement : MonoBehaviour, IRalentizable, IMicroGravity
         if (!_boostOn)
         {
             _speedModifier = 0.5f;
+            jumpHeight *= jumpHeightOnSlowMultiplier;
         }
         AudioManager.instance.TriggerSound(AudioManager.instance.sound["GeigerCounter"], 2, 0, 1, true);
     }
@@ -172,6 +160,7 @@ public class PlayerMovement : MonoBehaviour, IRalentizable, IMicroGravity
         if (!_boostOn)
         {
             _speedModifier = 1;
+            jumpHeight *= (1 / jumpHeightOnSlowMultiplier);
         }
         AudioManager.instance.TriggerSound(AudioManager.instance.sound["GeigerCounter"], 2, 0, 1, false);
     }
@@ -250,5 +239,22 @@ public class PlayerMovement : MonoBehaviour, IRalentizable, IMicroGravity
         _boostOn = false;
         CanvasManager.instance.jeringaActiveIcon.SetActive(false);
 
+    }
+
+    public void Transport(Vector3 v)
+    {
+        //print("PLAYERMOVEMENT: dispare transport " + v);
+        //_move += v;
+        controller.Move(v * Time.deltaTime * 0.5f);
+    }
+
+    public void EnterPlatform()
+    {
+        //entre a la platform
+    }
+
+    public void ExitPlatform()
+    {
+        //sali de la platform
     }
 }

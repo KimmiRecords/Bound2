@@ -20,8 +20,9 @@ public class PlayerStats : MonoBehaviour, IGaseable, IGraviFloorDamageable, IDea
     public GameObject ModeloLinterna;
     public CardKeyAccess[] cardKeyAccesses; //referencio a los paneles que necesitan llave para operar
     public int maxUsbs;
+
+    [HideInInspector]
     public int batteriesObtained = 0;
-    //public int currentBatteries = 1;
 
     public delegate void MyDelegate(Vector3 cp);
     public event MyDelegate OnDeath;
@@ -111,8 +112,12 @@ public class PlayerStats : MonoBehaviour, IGaseable, IGraviFloorDamageable, IDea
     {
         if (!playerFear)
         {
+            //Debug.Log("PLAYERSTATS: disparo CheckandRegen");
+
             _hpRegen.CheckAndRegen(ref _playerHp);
         }
+
+        //print(PlayerHp);
     }
 
     public void GetFlashlight()
@@ -150,13 +155,18 @@ public class PlayerStats : MonoBehaviour, IGaseable, IGraviFloorDamageable, IDea
             Die();
         }
     }
+
     public void InstaDeath()
     {
         PlayerHp = 0;
         Die();
     }
+
+
     public void Die()
     {
+        PlayerHp = 0;
+
         if (lastCheckpoint == Vector3.zero)
         {
             SceneManager.LoadScene("YouDiedScene");
@@ -166,6 +176,9 @@ public class PlayerStats : MonoBehaviour, IGaseable, IGraviFloorDamageable, IDea
             PlayerHp = playerHpMax;
             OnDeath(lastCheckpoint);
         }
+
+        playerFear = false;
+        print("DIE: fear es false");
     }
     public void Win()
     {
@@ -173,22 +186,18 @@ public class PlayerStats : MonoBehaviour, IGaseable, IGraviFloorDamageable, IDea
         _usbsCollected = 0;
         SceneManager.LoadScene("YouWinScene");
     }
-
     public void Gas(float dmg)
     {
         TakeDamage(dmg);
     }
-
     public void EnterGas()
     {
         AudioManager.instance.PlayTos();
     }
-
     public void TakeFloorDamage(float dmg)
     {
         TakeDamage(dmg);
     }
-
     public void EnterDeathFloor()
     {
         InstaDeath();

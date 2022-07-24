@@ -6,7 +6,7 @@ using UnityEngine.AI;
 
 public class Patrol : MonoBehaviour, IRalentizable
 {
-    //este script se lo adjuntas a un mosntruo para que patrulle
+    //este es el script general del boomer. 
     //va del punto 0 al 1 (pingpong)
     //si el player entra en rango, va hacia el punto 2 y explota a mitad de camino
     //TP2 - Francisco Serra y Diego Katabian
@@ -31,20 +31,22 @@ public class Patrol : MonoBehaviour, IRalentizable
 
     BoomerAnimations _boomerAnims;
     BoomerSounds _boomerSounds;
-    float _timeUntilExplosionPosta;
+    float _timeUntilStop;
     float _speedModifier;
+    float _desiredPainAnimationTime = 2;
+    float _initialNavMeshAgentSpeed;
     bool _yaViAlPlayer;
 
     void Start()
     {
         _boomerAnims = new BoomerAnimations(miAnimator);
         _boomerSounds = new BoomerSounds(this);
-        index = 0;
-        miNavMeshAgent.destination = points[0].position;
         _yaViAlPlayer = false;
-        _timeUntilExplosionPosta = Random.Range(timeUntilExplosionMin, timeUntilExplosionMax);
-        walk.Play();
-        _speedModifier = 1;
+        _initialNavMeshAgentSpeed = miNavMeshAgent.speed;
+
+        index = 0;
+        GoToPoint(points[index]);
+        Walk();
     }
 
     void Update()
@@ -58,26 +60,22 @@ public class Patrol : MonoBehaviour, IRalentizable
             GoToPoint(points[index]);
         }
 
-        if (miNavMeshAgent.remainingDistance < 1 && index == 2) //cuando llego al punto 2, me quedo quieto
-        {
-            miNavMeshAgent.speed = 0;
-        }
+        //if (miNavMeshAgent.remainingDistance < 1 && index == 2) //cuando llego al punto 2, me quedo quieto
+        //{
+        //    miNavMeshAgent.speed = 0;
+        //}
 
         if (!_yaViAlPlayer && detectPlayer.playerIsInRange) //veo al player y corro hacia punto 2
         {
-            //AudioManager.instance.StopZIdle();
             walk.Stop();
-
-            //AudioManager.instance.PlayZRun();
             run.Play();
-
 
             _boomerAnims.StartRunning();
             miNavMeshAgent.speed = runningSpeed * _speedModifier;
             index = 2;
             GoToPoint(points[index]);
-            Invoke("Stop", _timeUntilExplosionPosta - 2);
-            Invoke("Explode", _timeUntilExplosionPosta);
+            Invoke("Stop", _timeUntilStop);
+            Invoke("Explode", _timeUntilStop + _desiredPainAnimationTime);
 
             _yaViAlPlayer = true;
         }
@@ -86,13 +84,32 @@ public class Patrol : MonoBehaviour, IRalentizable
     public void GoToPoint(Transform point)
     {
         miNavMeshAgent.destination = point.position;
+        //print("GO TO POINT " + point.position);
+    }
+
+    public void Walk()
+    {
+        _timeUntilStop = Random.Range(timeUntilExplosionMin, timeUntilExplosionMax);
+        _speedModifier = 1;
+
+        miNavMeshAgent.speed = _initialNavMeshAgentSpeed;
+
+        walk.Play();
+        _boomerAnims.StartWalking();
+    }
+
+    public void Stop()
+    {
+        miNavMeshAgent.speed = 0;
+
+        run.Stop();
+        scream.Play();
+        _boomerAnims.StartPain();
     }
 
     public void Explode()
     {
-        //AudioManager.instance.StopZPainScream();
         scream.Stop();
-
         AudioManager.instance.PlayZExplosion(transform.position);
 
         GameObject _exp = Instantiate(explosionGameObject, boomerModel.transform.position, boomerModel.transform.rotation);
@@ -102,18 +119,23 @@ public class Patrol : MonoBehaviour, IRalentizable
         {
             PlayerStats.instance.InstaDeath();
         }
+        else
+        {
+            this.gameObject.SetActive(false);
+        }
 
-        this.gameObject.SetActive(false);
+        Invoke("Reset", 2);
+
+
     }
 
-    public void Stop()
+    public void Reset()
     {
-        _boomerAnims.StartPain();
-        //AudioManager.instance.StopZRun();
-        run.Stop();
-        //AudioManager.instance.PlayZPainScream();\
-        scream.Play();
-        miNavMeshAgent.speed = 0;
+        index = 0;
+        GoToPoint(points[index]);
+
+        Walk();
+        _yaViAlPlayer = false;
     }
 
     public void EnterSlow()
