@@ -15,7 +15,7 @@ public class BatteryPickup : Collectables
         PlayerStats.instance.batteriesObtained++;
         count.text = PlayerStats.instance.batteriesObtained.ToString("f0") + "/5";
 
-        wasteBattery.timer += batteryRecharge;
+        //wasteBattery.timer += batteryRecharge;
 
         
 
