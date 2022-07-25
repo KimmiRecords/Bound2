@@ -18,6 +18,8 @@ public class Slots : MonoBehaviour
     {
         slotIconGameObject = (RectTransform)this.gameObject.transform.GetChild(0);
         slotIconGameObject.GetComponent<Image>().sprite = icon;
+
+        
     }
 
     
