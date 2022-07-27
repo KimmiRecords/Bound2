@@ -24814,6 +24814,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Object
       objectReference: {fileID: 0}
+    - target: {fileID: 6153822310918341832, guid: 68d93feb19d99d043a103f3a040df7b0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6153822311176235328, guid: 68d93feb19d99d043a103f3a040df7b0,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -24843,6 +24848,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -152.86038
+      objectReference: {fileID: 0}
+    - target: {fileID: 6153822311199080476, guid: 68d93feb19d99d043a103f3a040df7b0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6153822311219904857, guid: 68d93feb19d99d043a103f3a040df7b0,
         type: 3}
@@ -24933,6 +24943,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Todos los Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 6153822311285911910, guid: 68d93feb19d99d043a103f3a040df7b0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6153822311497565796, guid: 68d93feb19d99d043a103f3a040df7b0,
         type: 3}
@@ -25073,6 +25088,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 6153822311648526341, guid: 68d93feb19d99d043a103f3a040df7b0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6153822311761323392, guid: 68d93feb19d99d043a103f3a040df7b0,
         type: 3}
@@ -40571,17 +40591,17 @@ PrefabInstance:
     - target: {fileID: 6718208575797854364, guid: ad879de42b68c7d4183d06578ee93335,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -43.3125
+      value: -85.54792
       objectReference: {fileID: 0}
     - target: {fileID: 6718208575797854364, guid: ad879de42b68c7d4183d06578ee93335,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.23
+      value: 6.25
       objectReference: {fileID: 0}
     - target: {fileID: 6718208575797854364, guid: ad879de42b68c7d4183d06578ee93335,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -43.0625
+      value: -42.035416
       objectReference: {fileID: 0}
     - target: {fileID: 6718208575797854364, guid: ad879de42b68c7d4183d06578ee93335,
         type: 3}
@@ -55160,6 +55180,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Mapa
+      objectReference: {fileID: 0}
+    - target: {fileID: 7859402457443552623, guid: 50600a68ed73c8044bd06c33713c5ee8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 50600a68ed73c8044bd06c33713c5ee8, type: 3}
