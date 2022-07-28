@@ -40,6 +40,9 @@ public class PlayerMovement : MonoBehaviour, IRalentizable, IMicroGravity, ITran
 
     Animator _anim;
 
+    [HideInInspector]
+    public LounchGranada lounchGranada;
+
     void Start()
     {
         if (GetComponent<CharacterController>() != null)
@@ -59,6 +62,8 @@ public class PlayerMovement : MonoBehaviour, IRalentizable, IMicroGravity, ITran
         pAnims = new PlayerAnimations(_anim); //construyo scripts x composicion
 
         PlayerStats.instance.OnDeath += TPToCheckpoint; //ya enterate
+
+        lounchGranada = playerCamera.GetComponent<LounchGranada>();
 
     }
 

@@ -366,6 +366,7 @@ GameObject:
   - component: {fileID: 6718208575435062041}
   - component: {fileID: 439361950890574567}
   - component: {fileID: 439361950890574568}
+  - component: {fileID: 1801178182065335520}
   m_Layer: 3
   m_Name: PlayerCamera
   m_TagString: MainCamera
@@ -387,6 +388,7 @@ Transform:
   - {fileID: 5454324149965616316}
   - {fileID: 6718208575965016196}
   - {fileID: 6718208575115947619}
+  - {fileID: 3641171464369049131}
   m_Father: {fileID: 8325978171381758354}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -494,6 +496,21 @@ MonoBehaviour:
   timerLife: {fileID: 0}
   boolActivated: {fileID: 0}
   timerFlashlight: {fileID: 0}
+--- !u!114 &1801178182065335520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6718208575435062045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91c2c0610320d8c44896e832b48ad815, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnPoint: {fileID: 3641171464369049131}
+  granada: {fileID: 3105459963815083073, guid: a4466533947edc044bf56c77810fd568, type: 3}
+  range: 20
 --- !u!1 &6718208575797854338
 GameObject:
   m_ObjectHideFlags: 0
@@ -527,7 +544,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6718208575797854338}
-  m_LocalRotation: {x: -0, y: -0.90110487, z: -0, w: 0.43360126}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -111, y: 5, z: 4}
   m_LocalScale: {x: 0.95, y: 0.95, z: 0.95}
   m_Children:
@@ -535,7 +552,7 @@ Transform:
   - {fileID: 670481640813067141}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: -128.607, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!143 &6718208575797854339
 CharacterController:
   m_ObjectHideFlags: 0
@@ -582,6 +599,7 @@ MonoBehaviour:
   controller: {fileID: 0}
   playerCamera: {fileID: 6718208575435062047}
   cameraFOVChangeDuration: 1
+  lounchGranada: {fileID: 0}
 --- !u!114 &2662333412612807085
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -941,6 +959,36 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!1 &7825902299395037908
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3641171464369049131}
+  m_Layer: 3
+  m_Name: GrenadeLaunchPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3641171464369049131
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7825902299395037908}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 1.3105263}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6718208575435062040}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1064184329974324334
 PrefabInstance:
   m_ObjectHideFlags: 0

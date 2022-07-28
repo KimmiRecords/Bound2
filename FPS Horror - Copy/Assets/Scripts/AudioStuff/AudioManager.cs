@@ -67,14 +67,19 @@ public class AudioManager : MonoBehaviour
         sound = this.sound[clipName];
         sound.Stop();
     }
-
+    public void PlayByNamePitch(string clipName, float pitch)
+    {
+        AudioSource sound;
+        sound = this.sound[clipName];
+        sound.pitch = pitch;
+        sound.Play();
+    }
 
     //BACKGROUNDMUSIC
     public void PlayBGM()
     {
         print("reproduje el sonido " + thisLevelBgm);
         sound[thisLevelBgm].Play();
-
     }
     public void StopBGM()
     {
@@ -437,7 +442,6 @@ public class AudioManager : MonoBehaviour
     {
         sound["BoostOn"].Play();
     }
-
     public void PlayBoostOff()
     {
         sound["BoostOff"].Play();
