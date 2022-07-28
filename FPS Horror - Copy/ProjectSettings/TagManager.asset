@@ -9,6 +9,7 @@ TagManager:
   - footprints
   - footprints1
   - footprints2
+  - Door
   layers:
   - Default
   - TransparentFX
@@ -23,7 +24,7 @@ TagManager:
   - ParedesPuertas
   - Boomers
   - Points
-  - 
+  - Explotables
   - 
   - 
   - 

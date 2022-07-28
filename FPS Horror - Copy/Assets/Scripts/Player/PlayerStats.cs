@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PlayerStats : MonoBehaviour, IGaseable, IGraviFloorDamageable, IDeathflooreable
+public class PlayerStats : MonoBehaviour, IGaseable, IGraviFloorDamageable, IDeathflooreable, IExplotable
 {
     //todos los stats del personaje principal
     //incluye getter y setter para hp y usbs recolectados
@@ -27,7 +27,6 @@ public class PlayerStats : MonoBehaviour, IGaseable, IGraviFloorDamageable, IDea
     public delegate void MyDelegate(Vector3 cp);
     public event MyDelegate OnDeath;
 
-
     [HideInInspector]
     public Transform playerTransform;
     [HideInInspector]
@@ -44,8 +43,8 @@ public class PlayerStats : MonoBehaviour, IGaseable, IGraviFloorDamageable, IDea
     float _playerHp;
     int _usbsCollected;
     int _speedBoosts;
+    int _grenades;
     HPRegen _hpRegen;
-
     public float PlayerHp
     {
         get
@@ -86,6 +85,27 @@ public class PlayerStats : MonoBehaviour, IGaseable, IGraviFloorDamageable, IDea
             if (_speedBoosts < 0)
             {
                 _speedBoosts = 0;
+            }
+        }
+    }
+    public int Grenades
+    {
+        get
+        {
+            return _grenades;
+        }
+
+        set
+        {
+            _grenades = value;
+            if (_grenades > 0)
+            {
+                CanvasManager.instance.granadaActiveIcon.SetActive(true);
+            }
+            else
+            {
+                _grenades = 0;
+                CanvasManager.instance.granadaActiveIcon.SetActive(false);
             }
         }
     }
@@ -201,5 +221,10 @@ public class PlayerStats : MonoBehaviour, IGaseable, IGraviFloorDamageable, IDea
     public void EnterDeathFloor()
     {
         InstaDeath();
+    }
+    public void ReceiveExplosion()
+    {
+        print("me comi una granada");
+        TakeDamage(100);
     }
 }

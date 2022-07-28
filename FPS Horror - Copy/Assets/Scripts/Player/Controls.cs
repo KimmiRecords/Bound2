@@ -58,6 +58,13 @@ public class Controls
             _playerMovement.playerCamera.GetComponent<Inventory>().InventoryOpen();
         }
 
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            _playerMovement.lounchGranada.Launch();
+        }
+
+
+
         //if (Input.GetKeyDown(KeyCode.Q))
         //{
         //    Flashlight.FlashlightFunction();
@@ -94,6 +101,13 @@ public class Controls
             CanvasManager.instance.TurnOnCanvas("CanvasJeringas");
 
             Debug.Log("CHEAT: conseguiste 1 speedboost");
+        }
+
+        if (Input.GetKeyDown(KeyCode.Semicolon))
+        {
+            PlayerStats.instance.Grenades++;
+            //CanvasManager.instance.TurnOnCanvas("CanvasGranadas");
+            Debug.Log("CHEAT: conseguiste 1 granada");
         }
     }
 }

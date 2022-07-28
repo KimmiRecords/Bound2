@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 
 
-public class Patrol : MonoBehaviour, IRalentizable
+public class Patrol : MonoBehaviour, IRalentizable, IExplotable
 {
     //este es el script general del boomer. 
     //va del punto 0 al 1 (pingpong)
@@ -118,15 +118,15 @@ public class Patrol : MonoBehaviour, IRalentizable
         if (detectPlayer.playerIsInRange)
         {
             PlayerStats.instance.InstaDeath();
+            Invoke("Reset", 2);
+
         }
         else
         {
             this.gameObject.SetActive(false);
         }
 
-        Invoke("Reset", 2);
-
-
+        //Invoke("Reset", 2);
     }
 
     public void Reset()
@@ -148,5 +148,10 @@ public class Patrol : MonoBehaviour, IRalentizable
     {
         _speedModifier = 1;
         miNavMeshAgent.speed *= 2;
+    }
+
+    public void ReceiveExplosion()
+    {
+        Explode();
     }
 }

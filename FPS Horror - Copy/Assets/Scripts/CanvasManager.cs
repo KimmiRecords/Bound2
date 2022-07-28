@@ -14,6 +14,7 @@ public class CanvasManager : MonoBehaviour
 
     public GameObject linternaActiveIcon;
     public GameObject jeringaActiveIcon;
+    public GameObject granadaActiveIcon;
 
     int turnOnCanvasCount = 0;
 

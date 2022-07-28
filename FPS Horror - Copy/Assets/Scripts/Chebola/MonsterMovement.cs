@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 
 
-public class MonsterMovement : MonoBehaviour, IRalentizable, IGaseable
+public class MonsterMovement : MonoBehaviour, IRalentizable, IGaseable, IExplotable
 {
     //este script se lo adjuntas al chebola para que haga daño en aura al player, y lo persiga si es visto
     //TP2 - Valentino Roman y Diego Katabian
@@ -177,7 +177,6 @@ public class MonsterMovement : MonoBehaviour, IRalentizable, IGaseable
         _screamerReady = true; //los violines
         _chebolaAnims.screamIsReady = true; //el aullido del chebola
         PlayerStats.instance.playerFear = false;
-
     }
     public void Habilitar()
     {
@@ -194,13 +193,20 @@ public class MonsterMovement : MonoBehaviour, IRalentizable, IGaseable
     public void Gas(float d)
     {
         print("chebola: a este chebola lo mato el gas");
-        AudioManager.instance.PlayHollowRoar(transform.position, 0.1f, 0.9f);
         CalmDown();
-        Destroy(this.gameObject);
+        //Destroy(this.gameObject);
+        this.gameObject.SetActive(false);
     }
 
     public void EnterGas()
     {
         print("monstermovement: el chebola entro al gas");
+    }
+
+    public void ReceiveExplosion()
+    {
+        print("chebola: a este chebola lo mato la granada");
+        CalmDown();
+        this.gameObject.SetActive(false);
     }
 }
