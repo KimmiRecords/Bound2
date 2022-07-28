@@ -27,7 +27,6 @@ public class PlayerStats : MonoBehaviour, IGaseable, IGraviFloorDamageable, IDea
     public delegate void MyDelegate(Vector3 cp);
     public event MyDelegate OnDeath;
 
-
     [HideInInspector]
     public Transform playerTransform;
     [HideInInspector]
@@ -46,7 +45,6 @@ public class PlayerStats : MonoBehaviour, IGaseable, IGraviFloorDamageable, IDea
     int _speedBoosts;
     int _grenades;
     HPRegen _hpRegen;
-
     public float PlayerHp
     {
         get
@@ -90,7 +88,6 @@ public class PlayerStats : MonoBehaviour, IGaseable, IGraviFloorDamageable, IDea
             }
         }
     }
-
     public int Grenades
     {
         get
@@ -101,9 +98,14 @@ public class PlayerStats : MonoBehaviour, IGaseable, IGraviFloorDamageable, IDea
         set
         {
             _grenades = value;
-            if (_grenades < 0)
+            if (_grenades > 0)
+            {
+                CanvasManager.instance.granadaActiveIcon.SetActive(true);
+            }
+            else
             {
                 _grenades = 0;
+                CanvasManager.instance.granadaActiveIcon.SetActive(false);
             }
         }
     }
@@ -220,7 +222,6 @@ public class PlayerStats : MonoBehaviour, IGaseable, IGraviFloorDamageable, IDea
     {
         InstaDeath();
     }
-
     public void ReceiveExplosion()
     {
         print("me comi una granada");
