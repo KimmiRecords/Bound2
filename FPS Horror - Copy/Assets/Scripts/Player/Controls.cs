@@ -106,7 +106,7 @@ public class Controls
         if (Input.GetKeyDown(KeyCode.Semicolon))
         {
             PlayerStats.instance.Grenades++;
-            //CanvasManager.instance.TurnOnCanvas("CanvasGranadas");
+            CanvasManager.instance.TurnOnCanvas("CanvasGranadas");
             Debug.Log("CHEAT: conseguiste 1 granada");
         }
     }

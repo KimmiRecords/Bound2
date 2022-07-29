@@ -28,9 +28,8 @@ public class Batteries : MonoBehaviour
             flashlightLife.timer += batteryRecharge;
             Debug.Log("active las baterias");
             slot.id = 0;
-
+            AudioManager.instance.PlayPickup(2f);
         }
-
     }
     
 }
