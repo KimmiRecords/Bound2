@@ -10,6 +10,12 @@ public class Nivel3SceneTester : MonoBehaviour
     public Vector3 position2;
     public Vector3 position3;
 
+    public Vector3 position4;
+
+    private void Start()
+    {
+        AudioManager.instance.StopByName("MainMenuMusic");
+    }
 
     // Update is called once per frame
     void Update()
@@ -37,6 +43,13 @@ public class Nivel3SceneTester : MonoBehaviour
         {
             player.controller.enabled = false;
             player.transform.position = position3;
+            player.controller.enabled = true;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Keypad4))
+        {
+            player.controller.enabled = false;
+            player.transform.position = position4;
             player.controller.enabled = true;
         }
     }
