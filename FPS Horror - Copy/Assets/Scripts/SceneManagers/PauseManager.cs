@@ -25,8 +25,9 @@ public class PauseManager : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Return))
             {
-                Time.timeScale = 1;
-                SceneManager.LoadScene("MainMenuScene");
+                //Time.timeScale = 1;
+                //SceneManager.LoadScene("MainMenuScene");
+                Application.Quit();
             }
         }
     }

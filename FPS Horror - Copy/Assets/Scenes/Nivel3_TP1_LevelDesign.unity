@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.010320564, g: 0.052662015, b: 0.1532675, a: 1}
+  m_IndirectSpecularColor: {r: 0.010316603, g: 0.052639157, b: 0.15321186, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -28515,7 +28515,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8926552378737291501, guid: b6503555394729e45ae751dc2baa87d3,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8944045348474592353, guid: b6503555394729e45ae751dc2baa87d3,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5448065513735464376, guid: b6503555394729e45ae751dc2baa87d3, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: b6503555394729e45ae751dc2baa87d3, type: 3}
 --- !u!4 &597602514 stripped
 Transform:
@@ -37634,7 +37645,7 @@ MeshRenderer:
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
   m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
+  m_SelectedEditorRenderState: 2
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
@@ -57714,12 +57725,13 @@ PrefabInstance:
     - target: {fileID: 6974513397967881233, guid: e6d6639e9fdd82b43bfe94dc9c8f6f9d,
         type: 3}
       propertyPath: desiredText
-      value: 'Numpad1-4: moverte por el nivel'
+      value: "Moverte por el nivel:\nH: Entrada. J: Puerta Azul.\nK: Balc\xF3n. 
+        L:Faro."
       objectReference: {fileID: 0}
     - target: {fileID: 6974513397967881233, guid: e6d6639e9fdd82b43bfe94dc9c8f6f9d,
         type: 3}
       propertyPath: desiredTime
-      value: 4
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6974513397967881233, guid: e6d6639e9fdd82b43bfe94dc9c8f6f9d,
         type: 3}
@@ -57835,6 +57847,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Center.z
       value: -2.094061
+      objectReference: {fileID: 0}
+    - target: {fileID: 6974513397967881239, guid: e6d6639e9fdd82b43bfe94dc9c8f6f9d,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e6d6639e9fdd82b43bfe94dc9c8f6f9d, type: 3}
@@ -63833,6 +63850,11 @@ PrefabInstance:
         type: 3}
       propertyPath: pickUpDistance
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6718208575435062041, guid: ad879de42b68c7d4183d06578ee93335,
+        type: 3}
+      propertyPath: mouseSensitivity
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 6718208575435062045, guid: ad879de42b68c7d4183d06578ee93335,
         type: 3}
@@ -87343,7 +87365,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8926552378737291501, guid: b6503555394729e45ae751dc2baa87d3,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8944045348474592353, guid: b6503555394729e45ae751dc2baa87d3,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5448065513735464376, guid: b6503555394729e45ae751dc2baa87d3, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: b6503555394729e45ae751dc2baa87d3, type: 3}
 --- !u!4 &1805144625 stripped
 Transform:
@@ -93979,7 +94012,7 @@ MeshRenderer:
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
   m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
+  m_SelectedEditorRenderState: 2
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
@@ -108409,6 +108442,7 @@ MonoBehaviour:
   position2: {x: 58.1, y: 5.6, z: -52}
   position3: {x: 46.52, y: 3.93, z: -10.77}
   position4: {x: 9.74, y: 164.91, z: 194.96}
+  allPauseTexts: {fileID: 0}
 --- !u!4 &2145931981
 Transform:
   m_ObjectHideFlags: 0

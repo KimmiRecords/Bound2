@@ -9,8 +9,9 @@ public class Nivel3SceneTester : MonoBehaviour
     public Vector3 position1;
     public Vector3 position2;
     public Vector3 position3;
-
     public Vector3 position4;
+
+    public GameObject allPauseTexts;
 
     private void Start()
     {
@@ -20,33 +21,36 @@ public class Nivel3SceneTester : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            Application.Quit();
-        }
+        //if(PlayerStats.instance.isPaused)
+        //{
+        //    if (Input.GetKeyDown(KeyCode.Return))
+        //    {
+        //        Application.Quit();
+        //    }
+        //}
 
-        if (Input.GetKeyDown(KeyCode.Keypad1))
+        if (Input.GetKeyDown(KeyCode.H))
         {
             player.controller.enabled = false;
             player.transform.position = position1;
             player.controller.enabled = true;
         }
 
-        if (Input.GetKeyDown(KeyCode.Keypad2))
+        if (Input.GetKeyDown(KeyCode.J))
         {
             player.controller.enabled = false;
             player.transform.position = position2;
             player.controller.enabled = true;
         }
 
-        if (Input.GetKeyDown(KeyCode.Keypad3))
+        if (Input.GetKeyDown(KeyCode.K))
         {
             player.controller.enabled = false;
             player.transform.position = position3;
             player.controller.enabled = true;
         }
 
-        if (Input.GetKeyDown(KeyCode.Keypad4))
+        if (Input.GetKeyDown(KeyCode.L))
         {
             player.controller.enabled = false;
             player.transform.position = position4;
