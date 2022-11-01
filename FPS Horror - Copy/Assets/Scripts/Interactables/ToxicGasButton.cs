@@ -11,7 +11,7 @@ public class ToxicGasButton : Interactable
     public ToxicGas[] queGasesApago;
     public bool oneTime; //si es de uno unico o toggle
 
-    bool yaPrendiLosGases = true;
+    public bool yaPrendiLosGases = true;
 
 
     public override void Interact()
