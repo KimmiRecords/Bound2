@@ -9,7 +9,6 @@ public class DoorControllerButton : Interactable
 
     public DoorController quePuertaAbro;
 
-    [HideInInspector]
     public bool access = false;
 
     public override void Interact()

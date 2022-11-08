@@ -13,7 +13,7 @@ public class DoorController : MonoBehaviour
 
     void Awake()
     {
-        _doorAnim = this.transform.parent.GetComponent<Animator>();
+        _doorAnim = transform.parent.GetComponent<Animator>();
     }
 
     private void OnTriggerEnter(Collider other)
