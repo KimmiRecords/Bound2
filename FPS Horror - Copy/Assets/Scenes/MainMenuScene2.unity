@@ -419,7 +419,7 @@ Light:
   serializedVersion: 10
   m_Type: 2
   m_Shape: 0
-  m_Color: {r: 0.9254902, g: 0.19607843, b: 0.6768839, a: 1}
+  m_Color: {r: 0.19607843, g: 0.37251198, b: 0.9254902, a: 1}
   m_Intensity: 10
   m_Range: 25.25
   m_SpotAngle: 30
@@ -1170,6 +1170,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8af824b0eff84f43b1ed1eedd801d5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneName: Nivel4
 --- !u!1 &1796644750
 GameObject:
   m_ObjectHideFlags: 0
@@ -1622,7 +1623,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'tp i
+  m_Text: 'tp ii
 
     level design
 

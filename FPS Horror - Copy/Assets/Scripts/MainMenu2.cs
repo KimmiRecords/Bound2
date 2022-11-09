@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu2 : MonoBehaviour
 {
+    public string sceneName;
+
     void Start()
     {
         AudioManager.instance.StopAll();
@@ -15,7 +17,7 @@ public class MainMenu2 : MonoBehaviour
     {
         if (Input.anyKey)
         {
-            SceneManager.LoadScene("Nivel3_TP1_LevelDesign"); //voy al tp1
+            SceneManager.LoadScene(sceneName);
         }
 
         if (Input.GetKeyDown(KeyCode.Escape))
