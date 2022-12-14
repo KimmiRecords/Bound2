@@ -12,7 +12,7 @@ public class BoomerAnimations
 
     public void StartWalking()
     {
-        Debug.Log("dispare startwalking");
+        //Debug.Log("dispare startwalking");
         anim.SetBool("isRunning", false);
         anim.SetBool("isPain", false);
     }
