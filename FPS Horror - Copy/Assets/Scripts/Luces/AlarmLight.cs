@@ -14,6 +14,8 @@ public class AlarmLight : MonoBehaviour
     public float maxIntensity;
     public float frequency;
 
+    public bool isOn;
+
     float timer;
     float amplitude;
 
@@ -29,8 +31,10 @@ public class AlarmLight : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timer += Time.deltaTime;
-        
-        luz.intensity = Mathf.Sin(timer * frequency) * amplitude + (maxIntensity + minIntensity) * 0.5f;
+        if (isOn)
+        {
+            timer += Time.deltaTime;
+            luz.intensity = Mathf.Sin(timer * frequency) * amplitude + (maxIntensity + minIntensity) * 0.5f;
+        }
     }
 }

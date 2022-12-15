@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu2 : MonoBehaviour
 {
-    public string sceneName;
+    public string[] sceneNames;
 
     void Start()
     {
@@ -15,9 +15,14 @@ public class MainMenu2 : MonoBehaviour
 
     void Update()
     {
-        if (Input.anyKey)
+        if (Input.GetKeyDown(KeyCode.R))
         {
-            SceneManager.LoadScene(sceneName);
+            SceneManager.LoadScene(sceneNames[0]);
+        }
+
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            SceneManager.LoadScene(sceneNames[1]);
         }
 
         if (Input.GetKeyDown(KeyCode.Escape))

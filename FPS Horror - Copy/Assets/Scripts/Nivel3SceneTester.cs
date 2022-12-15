@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Nivel3SceneTester : MonoBehaviour
 {
+    public static Nivel3SceneTester instance;
     public PlayerMovement player;
 
     public Vector3 position1;
@@ -11,7 +12,19 @@ public class Nivel3SceneTester : MonoBehaviour
     public Vector3 position3;
     public Vector3 position4;
 
-    public GameObject allPauseTexts;
+    //public GameObject allPauseTexts;
+
+    private void Awake()
+    {
+        if (instance) //esto es para que audiomanager sea unico. puse uno en cada escena, pero a traves de las escenas se mantiene vivo uno solo.
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            instance = this;
+        }
+    }
 
     private void Start()
     {
@@ -56,5 +69,12 @@ public class Nivel3SceneTester : MonoBehaviour
             player.transform.position = position4;
             player.controller.enabled = true;
         }
+    }
+
+    public void KillAndRespawnPlayer()
+    {
+        player.controller.enabled = false;
+        player.transform.position = position1;
+        player.controller.enabled = true;
     }
 }

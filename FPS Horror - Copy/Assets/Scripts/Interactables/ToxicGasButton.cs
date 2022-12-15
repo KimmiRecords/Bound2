@@ -13,6 +13,9 @@ public class ToxicGasButton : Interactable
 
     public bool yaPrendiLosGases = true;
 
+    public Light[] lucesQueHagoRojas;
+
+    bool alarmOn = false;
 
     public override void Interact()
     {
@@ -20,10 +23,23 @@ public class ToxicGasButton : Interactable
 
         if (!yaPrendiLosGases)
         {
+            if (!alarmOn)
+            {
+                for (int i = 0; i < lucesQueHagoRojas.Length; i++)
+                {
+                    lucesQueHagoRojas[i].color = Color.red;
+                }
+                AudioManager.instance.PlayAlarmaTriple();
+                alarmOn = true;
+            }
+
+
             for (int i = 0; i < queGasesApago.Length; i++) //prendo cada gas
             {
                 queGasesApago[i].gameObject.SetActive(true);
                 print("active el gas" + queGasesApago[i]);
+
+                
             }
             yaPrendiLosGases = true;
         }

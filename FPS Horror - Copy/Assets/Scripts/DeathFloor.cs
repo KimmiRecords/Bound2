@@ -13,8 +13,11 @@ public class DeathFloor : MonoBehaviour
     {
         if (other.GetComponent<IDeathflooreable>() != null)
         {
-            var matable = other.GetComponent<IDeathflooreable>();
-            matable.EnterDeathFloor();
+            //var matable = other.GetComponent<IDeathflooreable>();
+            //matable.EnterDeathFloor();
+
+            Nivel3SceneTester.instance.KillAndRespawnPlayer();
+            AudioManager.instance.PlayTPToCheckpoint();
         }
 
         //if (other.gameObject.layer == 3)
