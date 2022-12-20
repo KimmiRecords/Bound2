@@ -10,8 +10,8 @@ public class InstaTP : MonoBehaviour
 
     public Vector3 destination;
 
-    public bool spawneaTexto;
-    public GameObject textoDeseado;
+    public bool activaGameObject;
+    public GameObject gameObjectDeseado;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -20,9 +20,9 @@ public class InstaTP : MonoBehaviour
             var otro = other.GetComponent<PlayerMovement>();
             otro.TPToCheckpoint(destination);
 
-            if (spawneaTexto)
+            if (activaGameObject)
             {
-                textoDeseado.SetActive(true);
+                gameObjectDeseado.SetActive(true);
             }
         }
     }
