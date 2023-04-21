@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 
 
-public class Patrol : MonoBehaviour, IRalentizable, IExplotable
+public class Patrol : MonoBehaviour, IRalentizable  //*IExplotable*//
 {
     //este es el script general del boomer. 
     //va del punto 0 al 1 (pingpong)
@@ -65,20 +65,20 @@ public class Patrol : MonoBehaviour, IRalentizable, IExplotable
         //    miNavMeshAgent.speed = 0;
         //}
 
-        if (!_yaViAlPlayer && detectPlayer.playerIsInRange) //veo al player y corro hacia punto 2
-        {
-            walk.Stop();
-            run.Play();
+        //if (!_yaViAlPlayer && detectPlayer.playerIsInRange) //veo al player y corro hacia punto 2
+        //{
+        //    walk.Stop();
+        //    run.Play();
 
-            _boomerAnims.StartRunning();
-            miNavMeshAgent.speed = runningSpeed * _speedModifier;
-            index = 2;
-            GoToPoint(points[index]);
-            Invoke("Stop", _timeUntilStop);
-            Invoke("Explode", _timeUntilStop + _desiredPainAnimationTime);
+        //    _boomerAnims.StartRunning();
+        //    miNavMeshAgent.speed = runningSpeed * _speedModifier;
+        //    index = 2;
+        //    GoToPoint(points[index]);
+        //    Invoke("Stop", _timeUntilStop);
+        //    Invoke("Explode", _timeUntilStop + _desiredPainAnimationTime);
 
-            _yaViAlPlayer = true;
-        }
+        //    _yaViAlPlayer = true;
+        //}
     }
 
     public void GoToPoint(Transform point)
@@ -98,36 +98,36 @@ public class Patrol : MonoBehaviour, IRalentizable, IExplotable
         _boomerAnims.StartWalking();
     }
 
-    public void Stop()
-    {
-        miNavMeshAgent.speed = 0;
+    //public void Stop()
+    //{
+    //    miNavMeshAgent.speed = 0;
 
-        run.Stop();
-        scream.Play();
-        _boomerAnims.StartPain();
-    }
+    //    run.Stop();
+    //    scream.Play();
+    //    _boomerAnims.StartPain();
+    //}
 
-    public void Explode()
-    {
-        scream.Stop();
-        AudioManager.instance.PlayZExplosion(transform.position);
+    //public void Explode()
+    //{
+    //    scream.Stop();
+    //    AudioManager.instance.PlayZExplosion(transform.position);
 
-        GameObject _exp = Instantiate(explosionGameObject, boomerModel.transform.position, boomerModel.transform.rotation);
-        Destroy(_exp, 3);
+    //    GameObject _exp = Instantiate(explosionGameObject, boomerModel.transform.position, boomerModel.transform.rotation);
+    //    Destroy(_exp, 3);
 
-        if (detectPlayer.playerIsInRange)
-        {
-            PlayerStats.instance.InstaDeath();
-            Invoke("Reset", 2);
+    //    if (detectPlayer.playerIsInRange)
+    //    {
+    //        PlayerStats.instance.InstaDeath();
+    //        Invoke("Reset", 2);
 
-        }
-        else
-        {
-            this.gameObject.SetActive(false);
-        }
+    //    }
+    //    else
+    //    {
+    //        this.gameObject.SetActive(false);
+    //    }
 
-        //Invoke("Reset", 2);
-    }
+    //    //Invoke("Reset", 2);
+    //}
 
     public void Reset()
     {
@@ -150,8 +150,8 @@ public class Patrol : MonoBehaviour, IRalentizable, IExplotable
         miNavMeshAgent.speed *= 2;
     }
 
-    public void ReceiveExplosion()
-    {
-        Explode();
-    }
+    //public void ReceiveExplosion()
+    //{
+    //    Explode();
+    //}
 }

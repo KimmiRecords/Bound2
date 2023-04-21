@@ -26,7 +26,9 @@ public class PauseManager : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Return))
             {
                 Time.timeScale = 1;
-                SceneManager.LoadScene("MainMenuScene");
+                SceneManager.LoadScene("MainMenuScene2");
+                AudioManager.instance.StopByName("PassacagliaLoop");
+                //Application.Quit();
             }
         }
     }

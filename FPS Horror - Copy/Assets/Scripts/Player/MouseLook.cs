@@ -33,20 +33,9 @@ public class MouseLook : MonoBehaviour
         xRotation = Mathf.Clamp(xRotation, -90f, 90f);
 
         transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f); //rota la camara en x
+        playerBody.Rotate(Vector3.up * mouseX);
 
-        playerBody.Rotate(Vector3.up * mouseX); 
 
-
-        //interactuo con E -- por Fran
-        if ((Input.GetKeyDown(KeyCode.E) || Input.GetMouseButtonDown(0)) && sensedObj)
-        {
-            sensedObj.Interact(); //llamo al metodo comun a todos los interactables
-                                  //si es un hijo de interactable, va a polimorfear.
-        }
-    }
-
-    private void FixedUpdate()
-    {
         //LOGICA DEL RAYCAST -- por Fran
 
         Ray ray = new Ray(transform.position, transform.forward);
@@ -86,5 +75,19 @@ public class MouseLook : MonoBehaviour
             sensedObj = null;
             manito.SetActive(false);
         }
+
+
+
+        //interactuo con E -- por Fran
+        if ((Input.GetKeyDown(KeyCode.E) || Input.GetMouseButtonDown(0)) && sensedObj)
+        {
+            sensedObj.Interact(); //llamo al metodo comun a todos los interactables
+                                  //si es un hijo de interactable, va a polimorfear.
+        }
     }
+
+    //private void FixedUpdate()
+    //{
+       
+    //}
 }

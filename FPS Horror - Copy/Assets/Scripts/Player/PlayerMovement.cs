@@ -138,7 +138,7 @@ public class PlayerMovement : MonoBehaviour, IRalentizable, IMicroGravity, ITran
     {
         playerSpeed = walkingSpeed;
     }
-    void TPToCheckpoint(Vector3 cp)
+    public void TPToCheckpoint(Vector3 cp)
     {
         AudioManager.instance.PlayTPToCheckpoint();
         controller.enabled = false; //apago el character controller antes de moverlo
